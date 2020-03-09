@@ -31,7 +31,7 @@ try
 		if ($extension -eq '.rdl')
 		{
 			$contentType = "application/rdl"
-			$fileBody    = [Xml](Get-Content $file)
+			$fileBody    = [Xml](Get-Content $file.FullName)
 
 			$dataSources = $xml.Report.DataSources.ChildNodes
 
@@ -47,7 +47,7 @@ try
 		else
 		{
 			$contentType = "application/octet-stream"
-			$fileBytes   = [System.IO.File]::ReadAllBytes($file)
+			$fileBytes   = [System.IO.File]::ReadAllBytes($file.FullName)
 			$encoding    = [System.Text.Encoding]::GetEncoding("ISO-8859-1")
 			$fileBody    = $encoding.GetString($fileBytes)
 		}
@@ -66,7 +66,15 @@ try
 			$url = "imports?datasetDisplayName=$fileName&nameConflict=Overwrite"
 		}
 
-		Invoke-PowerBIRestMethod -Method Post -Url $url -Body $body -ContentType "multipart/form-data"
+		try
+		{
+			Invoke-PowerBIRestMethod -Method Post -Url $url -Body $body -ContentType "multipart/form-data"
+		}
+		catch
+		{
+			Resolve-PowerBIError -Last
+			throw
+		}
 	}
 }
 finally
