@@ -63,6 +63,12 @@
     },
     {
       "path": "tasks/Import"
+    },
+    {
+      "path": "tasks/CreateWorkspace"
+    },
+    {
+      "path": "tasks/DeleteWorkspace"
     }
   ],
   "contributions": [
@@ -220,6 +226,26 @@
       ],
       "properties": {
         "name": "tasks/Import"
+      }
+    },
+    {
+      "id": "bguidinger.powerbi-build-tools.task.createworkspace",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "tasks/CreateWorkspace"
+      }
+    },
+    {
+      "id": "bguidinger.powerbi-build-tools.task.deleteworkspace",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "tasks/DeleteWorkspace"
       }
     }
   ]
