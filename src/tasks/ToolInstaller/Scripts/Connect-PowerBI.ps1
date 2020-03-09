@@ -25,7 +25,7 @@ try
 	}
 	Else
 	{
-	    $tenantId     = $endpoint.Auth.Parameters.TenantId	
+		$tenantId     = $endpoint.Auth.Parameters.TenantId	
 		$clientId     = $endpoint.Auth.Parameters.ClientId
 		$clientSecret = ConvertTo-SecureString $endpoint.Auth.Parameters.ClientSecret -AsPlainText -Force
 		$credential   = New-Object System.Management.Automation.PSCredential $clientId, $clientSecret
@@ -35,5 +35,5 @@ try
 }
 finally
 {
-    Trace-VstsLeavingInvocation $MyInvocation
+	Trace-VstsLeavingInvocation $MyInvocation
 }

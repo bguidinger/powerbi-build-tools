@@ -44,5 +44,5 @@ try
 }
 finally
 {
-    Trace-VstsLeavingInvocation $MyInvocation
+	Trace-VstsLeavingInvocation $MyInvocation
 }
