@@ -55,6 +55,8 @@ try
 		$bodyRaw = "--{0}`r`nContent-Disposition: form-data`r`nContent-Type: {1}`r`n`r`n{2}`r`n--{0}--`r`n"
 		$body = $bodyRaw -f $boundary, $contentType, $fileBody
 
+		$fileName = [System.Net.WebUtility]::UrlEncode($fileName)
+
 		$groupId = Invoke-Expression "$toolsPath/Scripts/Get-PowerBIWorkspace.ps1 -Name '$groupName'"
 
 		if ($groupId)
