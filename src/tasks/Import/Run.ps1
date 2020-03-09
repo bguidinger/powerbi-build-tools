@@ -59,14 +59,14 @@ try
 
 		if ($groupId)
 		{
-			$url = "groups/$groupId/imports?datasetDisplayName=$fileName&nameConflict=Overwrite"
+			$url = "groups/$groupId/imports?datasetDisplayName=$fileName&nameConflict=$conflict"
 		}
 		else
 		{
-			$url = "imports?datasetDisplayName=$fileName&nameConflict=Overwrite"
+			$url = "imports?datasetDisplayName=$fileName&nameConflict=$conflict"
 		}
 
-		Write-VstsTaskDebug -Message $url
+		Write-Host $url
 
 		try
 		{
