@@ -2,7 +2,7 @@
   "id": "FAD78272-AB3C-4308-A429-1265D8C9F2E5",
   "name": "PowerBI.CreateWorkspace",
   "friendlyName": "Power BI Create Workspace",
-  "description": "Creates a new workspace in Power BI.",
+  "description": "Creates a workspace.",
   "author": "bguidinger",
   "category": "Azure Pipelines",
   "visibility": [

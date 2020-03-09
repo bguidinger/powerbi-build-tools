@@ -7,9 +7,12 @@ Use Power BI Build Tools to automate common build and release tasks related to P
 
 ## Actions
 
-| Action        | Description                              |
-|---------------|------------------------------------------|
-| Import        | Imports a file into a Power BI workspace |
+| Action              | Description
+|---------------------|------------------------------------------
+| Tool Installer      | Installs the tools.
+| Create Workspace    | Creates a workspace.
+| Delete Workspace    | Deletes a workspace.
+| Import              | Imports a file into a workspace.
 
 
 ## FAQ

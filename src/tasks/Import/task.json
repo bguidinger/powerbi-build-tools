@@ -2,7 +2,7 @@
   "id": "DF1CFF5F-8EC0-4102-BC87-C70ABDB3DC51",
   "name": "PowerBI.Import",
   "friendlyName": "Power BI Import",
-  "description": "Import a file to a Power BI workspace.",
+  "description": "Imports a file to a workspace.",
   "author": "bguidinger",
   "category": "Azure Pipelines",
   "visibility": [
