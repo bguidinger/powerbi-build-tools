@@ -83,7 +83,7 @@
         "ms.vss-endpoint.endpoint-types"
       ],
       "properties": {
-        "name": "PowerBI",
+        "name": "Power-BI",
         "displayName": "Power BI",
         "url": {
           "isVisible": "false",

@@ -21,7 +21,7 @@
   "inputs": [
     {
       "name": "ServiceEndpoint",
-      "type": "connectedService:PowerBI",
+      "type": "connectedService:Power-BI",
       "label": "Service Endpoint",
       "required": true
     },
