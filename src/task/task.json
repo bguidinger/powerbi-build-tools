@@ -1,0 +1,82 @@
+{
+  "id": "5B5E727F-409C-4469-BBE5-7F3813BE12AF",
+  "name": "PowerBI",
+  "friendlyName": "Power BI",
+  "description": "Execute a command from the Power BI API.",
+  "author": "bguidinger",
+  "category": "Azure Pipelines",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "demands": [
+    "powershell"
+  ],
+  "version": {
+    "Major": "1",
+    "Minor": "0",
+    "Patch": "0"
+  },
+  "instanceNameFormat": "Power BI $(Command)",
+  "inputs": [
+    {
+      "name": "Action",
+      "type": "pickList",
+      "label": "Action",
+      "required": true,
+      "options": {
+        "Import": "Import"
+      }
+    },
+    {
+      "name": "ServiceEndpoint",
+      "type": "connectedService:PowerBI",
+      "label": "Service Endpoint",
+      "required": true
+    },
+    {
+      "name": "WorkspaceId",
+      "type": "string",
+      "label": "Workspace ID",
+      "required": false,
+      "helpMarkDown": "Optional: If not specified, your personal workspace will be used."
+    },
+    {
+      "name": "Path",
+      "type": "filePath",
+      "label": "Path",
+      "required": false,
+      "helpMarkDown": "The path to a file or folder."
+    },
+    {
+      "name": "Conflict",
+      "type": "pickList",
+      "label": "Conflict",
+      "defaultValue": "Abort",
+      "required": false,
+      "helpMarkDown": "Determines what to do if a file with the same name already exists.",
+      "options": {
+        "Abort": "Abort",
+        "Overwrite": "Overwrite"
+      },
+      "visibleRule": "Action = Import"
+    },
+    {
+      "name": "ConnectionStrings",
+      "type": "string",
+      "label": "Connection Strings",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "Connection strings to replace in the .rdl files.",
+      "properties": {
+        "editorExtension": "ms.vss-services-azure.parameters-grid"
+      },
+      "visibleRule": "Action = Import"
+    }
+  ],
+  "execution": {
+    "PowerShell3": {
+      "target": "Scripts/Run.ps1"
+    }
+  }
+}
