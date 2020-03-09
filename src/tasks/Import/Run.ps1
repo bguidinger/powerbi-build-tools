@@ -31,7 +31,7 @@ try
 		if ($extension -eq '.rdl')
 		{
 			$contentType = "application/rdl"
-			$fileBody    = [Xml](Get-Content $file.FullName)
+			$xml         = [Xml](Get-Content $file.FullName)
 
 			$dataSources = $xml.Report.DataSources.ChildNodes
 
@@ -43,6 +43,8 @@ try
 					$dataSource.ConnectionProperties.ConnectString = $connectionString
 				}
 			}
+
+			$fileBody = $xml.InnerXml
 		}
 		else
 		{
@@ -78,7 +80,15 @@ try
 
 		Write-Host $url
 
-		Invoke-PowerBIRestMethod -Method Post -Url $url -Body $body -ContentType "multipart/form-data"
+		try
+		{
+			Invoke-PowerBIRestMethod -Method Post -Url $url -Body $body -ContentType "multipart/form-data"
+		}
+		catch
+		{
+			Resolve-PowerBIError -Last
+			throw
+		}
 	}
 }
 finally
