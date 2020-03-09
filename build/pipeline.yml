@@ -39,7 +39,7 @@ steps:
     extensionVersion: $(Build.BuildNumber)
     updateTasksVersion: true
     extensionPricing: free
-    extensionVisibility: private
+    extensionVisibility: public_preview
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Build Artifacts'
