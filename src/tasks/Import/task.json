@@ -28,7 +28,7 @@
     {
       "name": "WorkspaceName",
       "type": "string",
-      "label": "Workspace Name",
+      "label": "Workspace",
       "required": false,
       "helpMarkDown": "Optional: If not specified, your personal workspace will be used."
     },
@@ -38,18 +38,6 @@
       "label": "Path",
       "required": true,
       "helpMarkDown": "The path to the file or folder to import."
-    },
-    {
-      "name": "Conflict",
-      "type": "pickList",
-      "label": "Conflict",
-      "defaultValue": "Abort",
-      "required": true,
-      "helpMarkDown": "Determines what to do if a file with the same name already exists.",
-      "options": {
-        "Abort": "Abort",
-        "Overwrite": "Overwrite"
-      }
     },
     {
       "name": "ConnectionStrings",

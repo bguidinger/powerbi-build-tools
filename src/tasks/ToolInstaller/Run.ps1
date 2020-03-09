@@ -2,7 +2,7 @@
 
 param()
 
-$toolsPath = "$($env:AGENT_TOOLSDIRECTORY)/PowerBI/1.0.0"
+$toolsPath = "$($env:AGENT_TOOLSDIRECTORY)/PowerBI/1.0.13"
 
 if (-not (Test-Path $toolsPath))
 {

@@ -17,16 +17,16 @@ try
 
 	$groupName   = Get-VstsInput -Name WorkspaceName
 	$path        = Get-VstsInput -Name Path
-	$conflict    = Get-VstsInput -Name Conflict
 	$connections = Get-VstsInput -Name ConnectionStrings | ConvertFrom-Json -ErrorAction SilentlyContinue
 
 	$files = Get-ChildItem -Path $path
 
 	foreach ($file in $files)
 	{
-		$boundary  = [System.Guid]::NewGuid().ToString()
-		$fileName  = [System.IO.Path]::GetFileName($file)
-		$extension = [System.IO.Path]::GetExtension($file)
+		$boundary   = [System.Guid]::NewGuid().ToString()
+		$fileName   = [System.IO.Path]::GetFileName($file)
+		$extension  = [System.IO.Path]::GetExtension($file)
+		$reportName = [System.IO.Path]::GetFileNameWithoutExtension($file)
 		
 		if ($extension -eq '.rdl')
 		{
@@ -55,30 +55,30 @@ try
 		$bodyRaw = "--{0}`r`nContent-Disposition: form-data`r`nContent-Type: {1}`r`n`r`n{2}`r`n--{0}--`r`n"
 		$body = $bodyRaw -f $boundary, $contentType, $fileBody
 
-		$fileName = [System.Net.WebUtility]::UrlEncode($fileName)
-
-		$groupId = Invoke-Expression "$toolsPath/Scripts/Get-PowerBIWorkspace.ps1 -Name '$groupName'"
-
-		if ($groupId)
+		$groupId  = Invoke-Expression "$toolsPath/Scripts/Get-PowerBIWorkspace.ps1 -Name '$groupName'"
+		$reportId = Invoke-Expression "$toolsPath/Scripts/Get-PowerBIReport.ps1 -Name '$reportName' -GroupId '$groupId'"
+		
+		if ($reportId)
 		{
-			$url = "groups/$groupId/imports?datasetDisplayName=$fileName&nameConflict=$conflict"
+			$nameConflict = "Overwrite"
 		}
 		else
 		{
-			$url = "imports?datasetDisplayName=$fileName&nameConflict=$conflict"
+			$nameConflict = "Abort"
+		}
+
+		if ($groupId)
+		{
+			$url = "groups/$groupId/imports?datasetDisplayName=$fileName&nameConflict=$nameConflict"
+		}
+		else
+		{
+			$url = "imports?datasetDisplayName=$fileName&nameConflict=$nameConflict"
 		}
 
 		Write-Host $url
 
-		try
-		{
-			Invoke-PowerBIRestMethod -Method Post -Url $url -Body $body -ContentType "multipart/form-data"
-		}
-		catch
-		{
-			Resolve-PowerBIError -Last
-			throw
-		}
+		Invoke-PowerBIRestMethod -Method Post -Url $url -Body $body -ContentType "multipart/form-data"
 	}
 }
 finally
