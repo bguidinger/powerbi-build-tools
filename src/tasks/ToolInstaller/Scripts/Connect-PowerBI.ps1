@@ -4,9 +4,10 @@ param()
 
 Trace-VstsEnteringInvocation $MyInvocation
 
-Try
+try
 {
-	Import-Module -Name ".\ps_modules\MicrosoftPowerBIMgmt.Profile"
+	$toolsPath = Get-VstsTaskVariable -Name "PowerBI_Tools_Path"
+	Import-Module -Name "$toolsPath/Modules/MicrosoftPowerBIMgmt.Profile"
 
 	# Connection
 	$endpointName     = Get-VstsInput -Name ServiceEndpoint
@@ -31,16 +32,8 @@ Try
 
 		Connect-PowerBIServiceAccount -Environment $environment -Tenant $tenantId -Credential $credential -ServicePrincipal
 	}
-
-	# Action
-	$action = Get-VstsInput -Name Action
-	switch ($action)
-	{
-		"Import" { .\Run-Import.ps1 }
-	}
 }
-Finally
+finally
 {
-	Resolve-PowerBIError -Last
     Trace-VstsLeavingInvocation $MyInvocation
 }

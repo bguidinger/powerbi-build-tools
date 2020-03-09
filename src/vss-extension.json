@@ -32,10 +32,10 @@
   ],
   "content": {
     "license": {
-      "path": "license.md"
+      "path": "LICENSE.md"
     },
     "details": {
-      "path": "readme.md"
+      "path": "README.md"
     }
   },
   "links": {
@@ -59,7 +59,10 @@
   },
   "files": [
     {
-      "path": "task"
+      "path": "tasks/ToolInstaller"
+    },
+    {
+      "path": "tasks/Import"
     }
   ],
   "contributions": [
@@ -200,13 +203,23 @@
       }
     },
     {
-      "id": "bguidinger.powerbi-build-tools.task",
+      "id": "bguidinger.powerbi-build-tools.task.toolinstaller",
       "type": "ms.vss-distributed-task.task",
       "targets": [
         "ms.vss-distributed-task.tasks"
       ],
       "properties": {
-        "name": "task"
+        "name": "tasks/ToolInstaller"
+      }
+    },
+    {
+      "id": "bguidinger.powerbi-build-tools.task.import",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "tasks/Import"
       }
     }
   ]

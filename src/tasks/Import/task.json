@@ -1,8 +1,8 @@
 {
-  "id": "5B5E727F-409C-4469-BBE5-7F3813BE12AF",
-  "name": "PowerBI",
-  "friendlyName": "Power BI",
-  "description": "Execute a command from the Power BI API.",
+  "id": "DF1CFF5F-8EC0-4102-BC87-C70ABDB3DC51",
+  "name": "PowerBI.Import",
+  "friendlyName": "Power BI Import",
+  "description": "Import a file to a Power BI workspace.",
   "author": "bguidinger",
   "category": "Azure Pipelines",
   "visibility": [
@@ -17,17 +17,8 @@
     "Minor": "0",
     "Patch": "0"
   },
-  "instanceNameFormat": "Power BI $(Command)",
+  "instanceNameFormat": "Power BI Import: $(Path)",
   "inputs": [
-    {
-      "name": "Action",
-      "type": "pickList",
-      "label": "Action",
-      "required": true,
-      "options": {
-        "Import": "Import"
-      }
-    },
     {
       "name": "ServiceEndpoint",
       "type": "connectedService:PowerBI",
@@ -45,8 +36,8 @@
       "name": "Path",
       "type": "filePath",
       "label": "Path",
-      "required": false,
-      "helpMarkDown": "The path to a file or folder."
+      "required": true,
+      "helpMarkDown": "The path to the file or folder to import."
     },
     {
       "name": "Conflict",
@@ -58,8 +49,7 @@
       "options": {
         "Abort": "Abort",
         "Overwrite": "Overwrite"
-      },
-      "visibleRule": "Action = Import"
+      }
     },
     {
       "name": "ConnectionStrings",
@@ -70,13 +60,12 @@
       "helpMarkDown": "Connection strings to replace in the .rdl files.",
       "properties": {
         "editorExtension": "ms.vss-services-azure.parameters-grid"
-      },
-      "visibleRule": "Action = Import"
+      }
     }
   ],
   "execution": {
     "PowerShell3": {
-      "target": "Scripts/Run.ps1"
+      "target": "Run.ps1"
     }
   }
 }
