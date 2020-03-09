@@ -12,8 +12,7 @@ try
 		Write-VstsTaskError -Message "Please add the 'Power BI Tool Installer' before this task."
 	}
 
-	# Connect
-	& "$toolsPath/Scripts/Connect-PowerBI.ps1"
+	Invoke-Expression "$toolsPath/Scripts/Connect-PowerBI.ps1"
 
 	$name = Get-VstsInput -Name Name
 	$body = @{ name = $name } | ConvertTo-Json

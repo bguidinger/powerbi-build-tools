@@ -26,9 +26,9 @@
       "required": true
     },
     {
-      "name": "WorkspaceId",
+      "name": "WorkspaceName",
       "type": "string",
-      "label": "Workspace ID",
+      "label": "Workspace Name",
       "required": false,
       "helpMarkDown": "Optional: If not specified, your personal workspace will be used."
     },
@@ -44,7 +44,7 @@
       "type": "pickList",
       "label": "Conflict",
       "defaultValue": "Abort",
-      "required": false,
+      "required": true,
       "helpMarkDown": "Determines what to do if a file with the same name already exists.",
       "options": {
         "Abort": "Abort",
@@ -57,9 +57,11 @@
       "label": "Connection Strings",
       "defaultValue": "",
       "required": false,
-      "helpMarkDown": "Connection strings to replace in the .rdl files.",
+      "helpMarkDown": "Connection strings to replace in .rdl files. The keys are the names of the data sources.  The values are the connection strings.",
       "properties": {
-        "editorExtension": "ms.vss-services-azure.parameters-grid"
+        "resizable": "true",
+        "rows": "4",
+        "editorExtension": "ms.vss-services-azure.azure-servicebus-message-grid"
       }
     }
   ],

@@ -13,22 +13,49 @@ try
 	}
 
 	# Connect
-	& "$toolsPath/Scripts/Connect-PowerBI.ps1"
+	Invoke-Expression "$toolsPath/Scripts/Connect-PowerBI.ps1"
 
-	$groupId  = Get-VstsInput -Name WorkspaceId
-	$path     = Get-VstsInput -Name Path
-	$conflict = Get-VstsInput -Name Conflict
+	$groupName   = Get-VstsInput -Name WorkspaceName
+	$path        = Get-VstsInput -Name Path
+	$conflict    = Get-VstsInput -Name Conflict
+	$connections = Get-VstsInput -Name ConnectionStrings | ConvertFrom-Json -ErrorAction SilentlyContinue
 
 	$files = Get-ChildItem -Path $path
 
 	foreach ($file in $files)
 	{
-		$boundary = [System.Guid]::NewGuid().ToString()
-		$fileName = [System.IO.Path]::GetFileName($file)
-		$fileBody = [System.IO.File]::ReadAlltext($file)
+		$boundary  = [System.Guid]::NewGuid().ToString()
+		$fileName  = [System.IO.Path]::GetFileName($file)
+		$extension = [System.IO.Path]::GetExtension($file)
+		
+		if ($extension -eq '.rdl')
+		{
+			$contentType = "application/rdl"
+			$fileBody    = [Xml](Get-Content $file)
 
-		$bodyRaw = "--{0}`r`nContent-Disposition: form-data`r`nContent-Type: application/xml`r`n`r`n{1}`r`n--{0}--`r`n"
-		$body = $bodyRaw -f $boundary, $fileBody
+			$dataSources = $xml.Report.DataSources.ChildNodes
+
+			foreach ($dataSource in $dataSources)
+			{
+				$connectionString = $connections[$dataSource.Name]
+
+				if ($connectionString) {
+					$dataSource.ConnectionProperties.ConnectString = $connectionString
+				}
+			}
+		}
+		else
+		{
+			$contentType = "application/octet-stream"
+			$fileBytes   = [System.IO.File]::ReadAllBytes($file)
+			$encoding    = [System.Text.Encoding]::GetEncoding("ISO-8859-1")
+			$fileBody    = $encoding.GetString($fileBytes)
+		}
+
+		$bodyRaw = "--{0}`r`nContent-Disposition: form-data`r`nContent-Type: {1}`r`n`r`n{2}`r`n--{0}--`r`n"
+		$body = $bodyRaw -f $boundary, $contentType, $fileBody
+
+		$groupId = Invoke-Expression "$toolsPath/Scripts/Get-PowerBIWorkspace.ps1 -Name '$groupName'"
 
 		if ($groupId)
 		{
