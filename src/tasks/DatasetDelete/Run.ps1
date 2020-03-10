@@ -17,23 +17,23 @@ try
 	$group = Get-VstsInput -Name Group
 	$groupId = Invoke-Expression "$toolsPath/Scripts/Get-PowerBIGroup.ps1 -Name '$group'"
 	
-	$report = Get-VstsInput -Name Report
-	$reportId = Invoke-Expression "$toolsPath/Scripts/Get-PowerBIReport.ps1 -Name '$report' -GroupId '$groupId'"
+	$dataset = Get-VstsInput -Name Dataset
+	$datasetId = Invoke-Expression "$toolsPath/Scripts/Get-PowerBIDataset.ps1 -Name '$dataset' -GroupId '$groupId'"
 
-	if ($reportId)
+	if ($datasetId)
 	{
 		if ($groupId)
 		{
-			Invoke-PowerBIRestMethod -Method Delete -Url "groups/$groupId/reports/$reportId"
+			Invoke-PowerBIRestMethod -Method Delete -Url "groups/$groupId/datasets/$datasetId"
 		}
 		else
 		{
-			Invoke-PowerBIRestMethod -Method Delete -Url "reports/$reportId"
+			Invoke-PowerBIRestMethod -Method Delete -Url "datasets/$datasetId"
 		}
 	}
 	else
 	{
-		Write-VstsTaskError -Message "Unable to find a report with the name '$name'"
+		Write-VstsTaskError -Message "Unable to find a dataset with the name '$dataset'"
 	}
 }
 finally

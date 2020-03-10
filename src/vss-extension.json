@@ -72,6 +72,12 @@
     },
     {
       "path": "tasks/ReportDelete"
+    },
+    {
+      "path": "tasks/DatasetDelete"
+    },
+    {
+      "path": "tasks/DatasetRefresh"
     }
   ],
   "contributions": [
@@ -259,6 +265,26 @@
       ],
       "properties": {
         "name": "tasks/ReportDelete"
+      }
+    },
+    {
+      "id": "bguidinger.powerbi-build-tools.task.datasetdelete",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "tasks/DatasetDelete"
+      }
+    },
+    {
+      "id": "bguidinger.powerbi-build-tools.task.datasetrefresh",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "tasks/DatasetRefresh"
       }
     }
   ]

@@ -33,7 +33,7 @@ try
 	}
 	else
 	{
-		Write-VstsTaskError -Message "Unable to find a report with the name '$name'"
+		Write-VstsTaskError -Message "Unable to find a workspace with the name '$name'"
 	}
 }
 finally

@@ -8,12 +8,14 @@ Use Power BI Build Tools to automate common build and release tasks related to P
 ## Actions
 
 | Action              | Description
-|---------------------|------------------------------------------
+|---------------------|---------------------------------
 | Tool Installer      | Installs the tools.
-| Create Workspace    | Creates a workspace.
-| Delete Workspace    | Deletes a workspace.
 | Import              | Imports a file into a workspace.
-| Delete Report       | Deletes a report.
+| Dataset Delete      | Deletes a dataset.
+| Dataset Refresh     | Refreshes a dataset.
+| Report Delete       | Deletes a report.
+| Workspace Create    | Creates a workspace.
+| Workspace Delete    | Deletes a workspace.
 
 
 ## FAQ

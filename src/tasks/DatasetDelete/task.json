@@ -1,8 +1,8 @@
 {
-  "id": "6D720E3F-68BB-485C-901B-70941FEEFC94",
-  "name": "PowerBI.ReportDelete",
-  "friendlyName": "Power BI Report Delete",
-  "description": "Deletes a report.",
+  "id": "41E22979-0001-4EC3-A200-47B0B6727183",
+  "name": "PowerBI.DatasetDelete",
+  "friendlyName": "Power BI Dataset Delete",
+  "description": "Deletes a dataset.",
   "author": "bguidinger",
   "category": "Azure Pipelines",
   "visibility": [
@@ -17,7 +17,7 @@
     "Minor": "0",
     "Patch": "0"
   },
-  "instanceNameFormat": "Power BI Report Delete: $(Report)",
+  "instanceNameFormat": "Power BI Dataset Delete: $(Dataset)",
   "inputs": [
     {
       "name": "ServiceEndpoint",
@@ -33,11 +33,11 @@
       "helpMarkDown": "Specify either the ID or the Name of the workspace.  If not specified, your personal workspace will be used."
     },
     {
-      "name": "Report",
+      "name": "Dataset",
       "type": "string",
-      "label": "Report",
+      "label": "Dataset",
       "required": true,
-      "helpMarkDown": "Specify either the ID or the Name of the report."
+      "helpMarkDown": "Specify either the ID or the Name of the dataset."
     }
   ],
   "execution": {
