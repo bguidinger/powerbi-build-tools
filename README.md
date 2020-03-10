@@ -13,6 +13,7 @@ Use Power BI Build Tools to automate common build and release tasks related to P
 | Create Workspace    | Creates a workspace.
 | Delete Workspace    | Deletes a workspace.
 | Import              | Imports a file into a workspace.
+| Delete Report       | Deletes a report.
 
 
 ## FAQ

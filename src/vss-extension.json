@@ -65,10 +65,13 @@
       "path": "tasks/Import"
     },
     {
-      "path": "tasks/CreateWorkspace"
+      "path": "tasks/GroupCreate"
     },
     {
-      "path": "tasks/DeleteWorkspace"
+      "path": "tasks/GroupDelete"
+    },
+    {
+      "path": "tasks/ReportDelete"
     }
   ],
   "contributions": [
@@ -229,23 +232,33 @@
       }
     },
     {
-      "id": "bguidinger.powerbi-build-tools.task.createworkspace",
+      "id": "bguidinger.powerbi-build-tools.task.groupcreate",
       "type": "ms.vss-distributed-task.task",
       "targets": [
         "ms.vss-distributed-task.tasks"
       ],
       "properties": {
-        "name": "tasks/CreateWorkspace"
+        "name": "tasks/GroupCreate"
       }
     },
     {
-      "id": "bguidinger.powerbi-build-tools.task.deleteworkspace",
+      "id": "bguidinger.powerbi-build-tools.task.groupdelete",
       "type": "ms.vss-distributed-task.task",
       "targets": [
         "ms.vss-distributed-task.tasks"
       ],
       "properties": {
-        "name": "tasks/DeleteWorkspace"
+        "name": "tasks/GroupDelete"
+      }
+    },
+    {
+      "id": "bguidinger.powerbi-build-tools.task.reportdelete",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "tasks/ReportDelete"
       }
     }
   ]

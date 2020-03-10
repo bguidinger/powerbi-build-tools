@@ -26,11 +26,11 @@
       "required": true
     },
     {
-      "name": "WorkspaceName",
+      "name": "Group",
       "type": "string",
       "label": "Workspace",
       "required": false,
-      "helpMarkDown": "Optional: If not specified, your personal workspace will be used."
+      "helpMarkDown": "Specify either the ID or the Name of the workspace.  If not specified, your personal workspace will be used."
     },
     {
       "name": "Path",

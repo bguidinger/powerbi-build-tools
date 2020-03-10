@@ -6,16 +6,26 @@ param
     [Parameter(Mandatory = $false)][string]$GroupId
 )
 
-if ($GroupId)
+try
 {
-    $results = Invoke-PowerBIRestMethod -Method Get -Url "groups/$GroupId/reports"
+    $guid = [System.Guid]::Parse($Name)
+    $reportId = $guid.ToString("D")
 }
-else
+catch
 {
-    $results = Invoke-PowerBIRestMethod -Method Get -Url "reports"
+    if ($GroupId)
+    {
+        $results = Invoke-PowerBIRestMethod -Method Get -Url "groups/$GroupId/reports"
+    }
+    else
+    {
+        $results = Invoke-PowerBIRestMethod -Method Get -Url "reports"
+    }
+
+    $results = ($results | ConvertFrom-Json).value
+    $report = $results | ? { $_.name -eq $Name}
+
+    $reportId = $report.id
 }
 
-$results = ($results | ConvertFrom-Json).value
-$report = $results | ? { $_.name -eq $Name}
-
-return $report.id
+return $reportId

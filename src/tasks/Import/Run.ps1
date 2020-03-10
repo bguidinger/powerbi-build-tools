@@ -15,7 +15,7 @@ try
 	# Connect
 	Invoke-Expression "$toolsPath/Scripts/Connect-PowerBI.ps1"
 
-	$groupName   = Get-VstsInput -Name WorkspaceName
+	$group       = Get-VstsInput -Name Group
 	$path        = Get-VstsInput -Name Path
 	$connections = Get-VstsInput -Name ConnectionStrings | ConvertFrom-Json -ErrorAction SilentlyContinue
 
@@ -57,7 +57,7 @@ try
 		$bodyRaw = "--{0}`r`nContent-Disposition: form-data`r`nContent-Type: {1}`r`n`r`n{2}`r`n--{0}--`r`n"
 		$body = $bodyRaw -f $boundary, $contentType, $fileBody
 
-		$groupId  = Invoke-Expression "$toolsPath/Scripts/Get-PowerBIWorkspace.ps1 -Name '$groupName'"
+		$groupId  = Invoke-Expression "$toolsPath/Scripts/Get-PowerBIGroup.ps1 -Name '$group'"
 		$reportId = Invoke-Expression "$toolsPath/Scripts/Get-PowerBIReport.ps1 -Name '$reportName' -GroupId '$groupId'"
 		
 		if ($reportId)

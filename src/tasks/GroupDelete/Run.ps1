@@ -14,8 +14,8 @@ try
 
 	Invoke-Expression "$toolsPath/Scripts/Connect-PowerBI.ps1"
 
-	$name = Get-VstsInput -Name Name
-	$groupId = Invoke-Expression "$toolsPath/Scripts/Get-PowerBIWorkspace.ps1 -Name '$name'"
+	$group = Get-VstsInput -Name Group
+	$groupId = Invoke-Expression "$toolsPath/Scripts/Get-PowerBIGroup.ps1 -Name '$group'"
 
 	if ($groupId)
 	{
@@ -23,7 +23,7 @@ try
 	}
 	else
 	{
-		Write-VstsTaskError -Message "Unable to find a workspace with the name '$name'"
+		Write-VstsTaskError -Message "Unable to find a workspace with the name '$group'"
 	}
 }
 finally
