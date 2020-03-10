@@ -4,7 +4,9 @@ trigger:
 pool:
   vmImage: 'windows-latest'
 
-name: '1.0.$(Rev:r)'
+variables:
+  Version.MajorMinor: 1.1
+  Version.Revision: $[counter(variables['Version.MajorMinor'], 0)]
 
 steps:
 - powershell: |
