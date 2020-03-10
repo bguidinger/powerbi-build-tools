@@ -7,7 +7,6 @@ pool:
 variables:
   Version.MajorMinor: 1.1
   Version.Revision: $[counter(variables['Version.MajorMinor'], 0)]
-  Build.BuildNumber: $(Version.MajorMinor).$(Version.Revision)
 
 steps:
 - powershell: |
@@ -38,8 +37,8 @@ steps:
   displayName: 'Package Extension'
   inputs:
     rootFolder: '$(Build.SourcesDirectory)/src'
-    outputPath: '$(Build.StagingDirectory)/bguidinger.powerbi-build-tools-$(Build.BuildNumber).vsix'
-    extensionVersion: $(Build.BuildNumber)
+    outputPath: '$(Build.StagingDirectory)/bguidinger.powerbi-build-tools-$(Version.MajorMinor).$(Version.Revision).vsix'
+    extensionVersion: $(Version.MajorMinor).$(Version.Revision)
     updateTasksVersion: true
     extensionPricing: free
     extensionVisibility: public_preview
