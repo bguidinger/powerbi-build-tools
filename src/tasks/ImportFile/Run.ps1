@@ -92,6 +92,9 @@ try
 		# Update report data source credentials
 		if ($extension -eq '.rdl')
 		{
+			# Sleeping because the API doesn't track the import right away
+			Start-Sleep -Milliseconds 500
+
 			$import = Invoke-Expression "$toolsPath/Scripts/Get-PowerBIImport.ps1 -ImportId '$importId' -GroupId '$groupId'"
 			$reportId = $import.reports.id
 			$reportDataSources = Invoke-Expression "$toolsPath/Scripts/Get-PowerBIReportDataSources.ps1 -ReportId '$reportId' -GroupId '$groupId'"
