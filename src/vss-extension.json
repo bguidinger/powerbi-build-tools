@@ -231,7 +231,7 @@
       }
     },
     {
-      "id": "bguidinger.powerbi-build-tools.task.importfile",
+      "id": "bguidinger.powerbi-build-tools.task.import",
       "type": "ms.vss-distributed-task.task",
       "targets": [
         "ms.vss-distributed-task.tasks"
@@ -241,7 +241,7 @@
       }
     },
     {
-      "id": "bguidinger.powerbi-build-tools.task.groupcreate",
+      "id": "bguidinger.powerbi-build-tools.task.createworkspace",
       "type": "ms.vss-distributed-task.task",
       "targets": [
         "ms.vss-distributed-task.tasks"
@@ -251,7 +251,7 @@
       }
     },
     {
-      "id": "bguidinger.powerbi-build-tools.task.groupdelete",
+      "id": "bguidinger.powerbi-build-tools.task.deleteworkspace",
       "type": "ms.vss-distributed-task.task",
       "targets": [
         "ms.vss-distributed-task.tasks"
