@@ -1,7 +1,7 @@
 {
   "id": "0C1B48D0-C617-425A-9BF4-46EEFF95C7F0",
-  "name": "PowerBI.ToolInstaller",
-  "friendlyName": "Power BI Tool Installer",
+  "name": "PowerBI.ToolsInstaller",
+  "friendlyName": "Power BI Tools Installer",
   "description": "Installs the Power BI Build Tools.",
   "author": "bguidinger",
   "category": "Azure Pipelines",
