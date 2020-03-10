@@ -80,7 +80,7 @@ try
 
 		try
 		{
-			Invoke-PowerBIRestMethod -Method Post -Url $url -Body $body -ContentType "multipart/form-data"
+			$importId = (Invoke-PowerBIRestMethod -Method Post -Url $url -Body $body -ContentType "multipart/form-data" | ConvertFrom-Json).id
 		}
 		catch
 		{
@@ -92,7 +92,8 @@ try
 		# Update report data source credentials
 		if ($extension -eq '.rdl')
 		{
-			$reportId = Invoke-Expression "$toolsPath/Scripts/Get-PowerBIReport.ps1 -Name '$reportName' -GroupId '$groupId'"
+			$import = Invoke-Expression "$toolsPath/Scripts/Get-PowerBIImport.ps1 -Name '$reportName' -GroupId '$groupId'"
+			$reportId = $import.reports.id
 			$reportDataSources = Invoke-Expression "$toolsPath/Scripts/Get-PowerBIReportDataSources.ps1 -ReportId '$reportId' -GroupId '$groupId'"
 
 			# Set Credentials
