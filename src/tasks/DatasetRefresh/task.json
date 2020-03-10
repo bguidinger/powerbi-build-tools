@@ -33,11 +33,11 @@
       "helpMarkDown": "Specify either the ID or the Name of the workspace.  If not specified, your personal workspace will be used."
     },
     {
-      "name": "Report",
+      "name": "Dataset",
       "type": "string",
-      "label": "Report",
+      "label": "Dataset",
       "required": true,
-      "helpMarkDown": "Specify either the ID or the Name of the report."
+      "helpMarkDown": "Specify either the ID or the Name of the dataset."
     }
   ],
   "execution": {

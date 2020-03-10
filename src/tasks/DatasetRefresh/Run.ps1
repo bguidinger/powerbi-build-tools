@@ -16,19 +16,20 @@ try
 
 	$group = Get-VstsInput -Name Group
 	$groupId = Invoke-Expression "$toolsPath/Scripts/Get-PowerBIGroup.ps1 -Name '$group'"
-	
-	$report = Get-VstsInput -Name Report
-	$reportId = Invoke-Expression "$toolsPath/Scripts/Get-PowerBIReport.ps1 -Name '$report' -GroupId '$groupId'"
 
-	if ($reportId)
+	$dataset = Get-VstsInput -Name Dataset
+	$datasetId = Invoke-Expression "$toolsPath/Scripts/Get-PowerBIDataset.ps1 -Name '$dataset' -GroupId '$groupId'"
+
+	if ($datasetId)
 	{
+		$body = @{ notifyOption = "NoNotification" } | ConvertTo-Json
 		if ($groupId)
 		{
-			Invoke-PowerBIRestMethod -Method Delete -Url "groups/$groupId/reports/$reportId"
+			Invoke-PowerBIRestMethod -Method Post -Url "groups/$groupId/datasets/$datasetId/refreshes" -Body $body
 		}
 		else
 		{
-			Invoke-PowerBIRestMethod -Method Delete -Url "reports/$reportId"
+			Invoke-PowerBIRestMethod -Method Post -Url "datasets/$datasetId/refreshes" -Body $body
 		}
 	}
 	else
