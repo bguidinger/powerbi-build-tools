@@ -38,7 +38,7 @@ steps:
   inputs:
     rootFolder: '$(Build.SourcesDirectory)/src'
     outputPath: '$(Build.StagingDirectory)/bguidinger.powerbi-build-tools-$(Build.BuildNumber).vsix'
-    extensionVersion: $(Build.BuildNumber)
+    extensionVersion: $(Version.MajorMinor).$(Version.Revision)
     updateTasksVersion: true
     extensionPricing: free
     extensionVisibility: public_preview
