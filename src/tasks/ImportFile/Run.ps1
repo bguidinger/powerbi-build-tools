@@ -37,6 +37,11 @@ try
 
 			foreach ($dataSource in $dataSources)
 			{
+				if ($dataSource.ConnectionProperties.DataProvider -eq "SQL")
+				{
+					$dataSource.ConnectionProperties.DataProvider = "SQLAZURE"
+				}
+				
 				$connectionString = $connections[$dataSource.Name]
 
 				if ($connectionString) {
