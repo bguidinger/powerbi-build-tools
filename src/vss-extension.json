@@ -65,7 +65,7 @@
       "path": "tasks/ToolInstaller"
     },
     {
-      "path": "tasks/Import"
+      "path": "tasks/ImportFile"
     },
     {
       "path": "tasks/GroupCreate"
@@ -231,13 +231,13 @@
       }
     },
     {
-      "id": "bguidinger.powerbi-build-tools.task.import",
+      "id": "bguidinger.powerbi-build-tools.task.importfile",
       "type": "ms.vss-distributed-task.task",
       "targets": [
         "ms.vss-distributed-task.tasks"
       ],
       "properties": {
-        "name": "tasks/Import"
+        "name": "tasks/ImportFile"
       }
     },
     {
