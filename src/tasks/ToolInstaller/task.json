@@ -1,6 +1,6 @@
 {
-  "id": "0C1B48D0-C617-425A-9BF4-46EEFF95C7F0",
-  "name": "PowerBI.ToolsInstaller",
+  "id": "AD266AD9-F30E-41DE-A093-988972A0BD7A",
+  "name": "PowerBI.ToolInstaller",
   "friendlyName": "Power BI Tools Installer",
   "description": "Installs the Power BI Build Tools.",
   "author": "bguidinger",
