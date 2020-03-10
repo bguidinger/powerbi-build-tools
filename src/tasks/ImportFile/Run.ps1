@@ -37,14 +37,7 @@ try
 
 			foreach ($dataSource in $dataSources)
 			{
-				if ($dataSource.ConnectionProperties.DataProvider -eq "SQL")
-				{
-					$dataSource.ConnectionProperties.DataProvider = "SQLAZURE"
-				}
-				
-				$connectionString = $connections[$dataSource.Name]
-
-				if ($connectionString) {
+				if ($connectionString = $connections.$($dataSource.Name)) {
 					$dataSource.ConnectionProperties.ConnectString = $connectionString
 				}
 			}
@@ -93,6 +86,48 @@ try
 		{
 			Resolve-PowerBIError -Last
 			throw
+		}
+
+
+		# Update report data source credentials
+		if ($extension -eq '.rdl')
+		{
+			$reportId = Invoke-Expression "$toolsPath/Scripts/Get-PowerBIReport.ps1 -Name '$reportName' -GroupId '$groupId'"
+			$reportDataSources = Invoke-Expression "$toolsPath/Scripts/Get-PowerBIReportDataSources.ps1 -ReportId '$reportId' -GroupId '$groupId'"
+
+			# Set Credentials
+			foreach ($dataSource in $dataSources)
+			{
+				if ($connectionString = $connections.$($dataSource.Name))
+				{
+					$dataProvider = $dataSource.ConnectionProperties.DataProvider
+					if ($dataProvider -eq "SQLAZURE")
+					{
+						$builder = New-Object System.Data.SqlClient.SqlConnectionStringBuilder($connectionString)
+
+						$candidates = $reportDataSources | ? {$_.connectionDetails.server -eq $builder.DataSource -and $_.connectionDetails.database -eq $builder.InitialCatalog}
+						foreach ($candidate in $candidates)
+						{
+							$body = @{
+								credentialDetails = @{
+									credentialType = "Basic";
+									credentials = "{`"credentialData`":[{`"name`":`"username`", `"value`":`"$($builder.UserID)`"},{`"name`":`"password`", `"value`":`"$($builder.Password)`"}]}";
+									encryptedConnection = "Encrypted";
+									encryptionAlgorithm = "None";
+									privacyLevel = "None"
+								}
+							} | ConvertTo-Json
+
+							$gatewayId = $candidate.gatewayId
+							$datasourceId = $candidate.datasourceId
+
+							$url = "gateways/$gatewayId/datasources/$datasourceId"
+							$url
+							Invoke-PowerBIRestMethod -Method Patch -Url $url -Body $body
+						}
+					}
+				}
+			}
 		}
 	}
 }
