@@ -65,12 +65,6 @@
       "path": "tasks/DatasetRefresh"
     },
     {
-      "path": "tasks/GroupCreate"
-    },
-    {
-      "path": "tasks/GroupDelete"
-    },
-    {
       "path": "tasks/ImportFile"
     },
     {
@@ -78,6 +72,12 @@
     },
     {
       "path": "tasks/ToolInstaller"
+    },
+    {
+      "path": "tasks/WorkspaceCreate"
+    },
+    {
+      "path": "tasks/WorkspaceDelete"
     }
   ],
   "contributions": [
@@ -238,26 +238,6 @@
       }
     },
     {
-      "id": "GroupCreate",
-      "type": "ms.vss-distributed-task.task",
-      "targets": [
-        "ms.vss-distributed-task.tasks"
-      ],
-      "properties": {
-        "name": "tasks/GroupCreate"
-      }
-    },
-    {
-      "id": "GroupDelete",
-      "type": "ms.vss-distributed-task.task",
-      "targets": [
-        "ms.vss-distributed-task.tasks"
-      ],
-      "properties": {
-        "name": "tasks/GroupDelete"
-      }
-    },
-    {
       "id": "ImportFile",
       "type": "ms.vss-distributed-task.task",
       "targets": [
@@ -285,6 +265,26 @@
       ],
       "properties": {
         "name": "tasks/ToolInstaller"
+      }
+    },
+    {
+      "id": "WorkspaceCreate",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "tasks/WorkspaceCreate"
+      }
+    },
+    {
+      "id": "WorkspaceDelete",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "tasks/WorkspaceDelete"
       }
     }
   ]

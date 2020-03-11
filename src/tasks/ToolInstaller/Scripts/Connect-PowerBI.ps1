@@ -10,8 +10,8 @@ try
 	Import-Module -Name "$toolsPath/Modules/MicrosoftPowerBIMgmt.Profile"
 
 	# Connection
-	$endpointName     = Get-VstsInput -Name ServiceEndpoint
-	$endpoint         = Get-VstsEndpoint -Name $endpointName
+	$connection       = Get-VstsInput -Name Connection
+	$endpoint         = Get-VstsEndpoint -Name $connection
 	$authScheme       = $endpoint.Auth.Scheme
 	$environment      = $endpoint.Data.Environment
 

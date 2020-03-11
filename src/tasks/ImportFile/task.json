@@ -20,13 +20,13 @@
   "instanceNameFormat": "Power BI Import: $(Path)",
   "inputs": [
     {
-      "name": "ServiceEndpoint",
+      "name": "Connection",
       "type": "connectedService:Power-BI",
-      "label": "Service Endpoint",
+      "label": "Power BI connection",
       "required": true
     },
     {
-      "name": "Group",
+      "name": "Workspace",
       "type": "string",
       "label": "Workspace",
       "required": false,

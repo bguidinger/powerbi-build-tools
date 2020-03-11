@@ -1,8 +1,8 @@
 {
-  "id": "A388F2F6-314B-40C9-805E-7F312DBC0B8E",
-  "name": "CreateWorkspace",
-  "friendlyName": "Power BI Create Workspace",
-  "description": "Creates a workspace.",
+  "id": "CC9FD5CC-CD70-46D6-BF0D-E68027B2B145",
+  "name": "WorkspaceDelete",
+  "friendlyName": "Power BI Delete Workspace",
+  "description": "Deletes a workspace.",
   "author": "bguidinger",
   "category": "Azure Pipelines",
   "visibility": [
@@ -17,20 +17,20 @@
     "Minor": "0",
     "Patch": "0"
   },
-  "instanceNameFormat": "Power BI Create Workspace: $(Name)",
+  "instanceNameFormat": "Power BI Delete Workspace: $(Group)",
   "inputs": [
     {
-      "name": "ServiceEndpoint",
+      "name": "Connection",
       "type": "connectedService:Power-BI",
-      "label": "Service Endpoint",
+      "label": "Power BI connection",
       "required": true
     },
     {
-      "name": "Name",
+      "name": "Workspace",
       "type": "string",
-      "label": "Group Name",
+      "label": "Workspace",
       "required": true,
-      "helpMarkDown": "The name of the workspace to create."
+      "helpMarkDown": "Specify either the ID or the Name of the workspace."
     }
   ],
   "execution": {
