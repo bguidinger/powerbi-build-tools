@@ -2,7 +2,7 @@
   "id": "D840050B-C7CF-4952-80F5-C4EBE90303C6",
   "name": "WorkspaceDelete",
   "friendlyName": "Power BI Delete Workspace",
-  "description": "Deletes a workspace.",
+  "description": "Delete a workspace.",
   "author": "bguidinger",
   "category": "Azure Pipelines",
   "visibility": [
@@ -30,7 +30,7 @@
       "type": "string",
       "label": "Workspace",
       "required": true,
-      "helpMarkDown": "Specify either the ID or the Name of the workspace."
+      "helpMarkDown": "The ID or name of the workspace."
     }
   ],
   "execution": {

@@ -2,7 +2,7 @@
   "id": "5A22C382-DFAB-45DC-81A9-119B60BF149E",
   "name": "DatasetRefresh",
   "friendlyName": "Power BI Dataset Refresh",
-  "description": "Refreshes a dataset.",
+  "description": "Refresh a dataset.",
   "author": "bguidinger",
   "category": "Azure Pipelines",
   "visibility": [
@@ -30,14 +30,14 @@
       "type": "string",
       "label": "Workspace",
       "required": false,
-      "helpMarkDown": "Specify either the ID or the Name of the workspace.  If not specified, your personal workspace will be used."
+      "helpMarkDown": "The ID or name of the workspace. If not specified, your personal workspace will be used."
     },
     {
       "name": "Dataset",
       "type": "string",
       "label": "Dataset",
       "required": true,
-      "helpMarkDown": "Specify either the ID or the Name of the dataset."
+      "helpMarkDown": "The ID or name of the dataset."
     }
   ],
   "execution": {

@@ -2,7 +2,7 @@
   "id": "AAEC402F-796A-4A92-8431-409F912A552B",
   "name": "ReportDelete",
   "friendlyName": "Power BI Report Delete",
-  "description": "Deletes a report.",
+  "description": "Delete a report.",
   "author": "bguidinger",
   "category": "Azure Pipelines",
   "visibility": [
@@ -30,7 +30,7 @@
       "type": "string",
       "label": "Workspace",
       "required": false,
-      "helpMarkDown": "Specify either the ID or the Name of the workspace.  If not specified, your personal workspace will be used."
+      "helpMarkDown": "The ID or name of the workspace. If not specified, your personal workspace will be used."
     },
     {
       "name": "Report",

@@ -2,7 +2,7 @@
   "id": "6C4AF98D-5B3D-45E7-9B51-50E2C6642FB2",
   "name": "ImportFile",
   "friendlyName": "Power BI Import File",
-  "description": "Imports a file to a workspace.",
+  "description": "Import a file.",
   "author": "bguidinger",
   "category": "Azure Pipelines",
   "visibility": [
@@ -30,7 +30,7 @@
       "type": "string",
       "label": "Workspace",
       "required": false,
-      "helpMarkDown": "Specify either the ID or the Name of the workspace.  If not specified, your personal workspace will be used."
+      "helpMarkDown": "The ID or name of the workspace. If not specified, your personal workspace will be used."
     },
     {
       "name": "Path",
