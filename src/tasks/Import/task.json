@@ -1,8 +1,8 @@
 {
-  "id": "18EE7BE7-E872-4EA9-ACBE-8501FE92487C",
-  "name": "PowerBIImportFile",
-  "friendlyName": "Power BI Import File",
-  "description": "Import a file.",
+  "id": "77680253-A4B5-41FE-BFE5-7FDCE6E8C289",
+  "name": "PowerBIImport",
+  "friendlyName": "Power BI Import",
+  "description": "Import a file or folder.",
   "author": "bguidinger",
   "category": "Azure Pipelines",
   "visibility": [
@@ -10,6 +10,7 @@
     "Release"
   ],
   "demands": [
+    "powerbi",
     "powershell"
   ],
   "version": {

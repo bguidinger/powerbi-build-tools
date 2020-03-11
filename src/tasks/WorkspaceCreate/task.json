@@ -10,6 +10,7 @@
     "Release"
   ],
   "demands": [
+    "powerbi",
     "powershell"
   ],
   "version": {

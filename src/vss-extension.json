@@ -65,7 +65,7 @@
       "path": "tasks/DatasetRefresh"
     },
     {
-      "path": "tasks/ImportFile"
+      "path": "tasks/Import"
     },
     {
       "path": "tasks/ReportDelete"
@@ -238,13 +238,13 @@
       }
     },
     {
-      "id": "PowerBIImportFile",
+      "id": "PowerBIImport",
       "type": "ms.vss-distributed-task.task",
       "targets": [
         "ms.vss-distributed-task.tasks"
       ],
       "properties": {
-        "name": "tasks/ImportFile"
+        "name": "tasks/Import"
       }
     },
     {
