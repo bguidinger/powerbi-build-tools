@@ -16,6 +16,7 @@ steps:
    Save-Module -Name VstsTaskSdk -RequiredVersion 0.11.0 -Path .
 
    Set-Location $(Build.SourcesDirectory)
+   (Get-Content .\README.md) -replace './docs', 'https://github.com/bguidinger/powerbi-build-tools/tree/master/docs' | Out-File .\README.md
    Copy-Item README.md src
    Copy-Item LICENSE.md src
 
