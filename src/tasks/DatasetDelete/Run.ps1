@@ -14,10 +14,10 @@ try
 
 	Invoke-Expression "$toolsPath/Scripts/Connect-PowerBI.ps1"
 
-	$group = Get-VstsInput -Name Workspace
+	$group = Get-VstsInput -Name workspace
 	$groupId = Invoke-Expression "$toolsPath/Scripts/Get-PowerBIGroup.ps1 -Name '$group'"
 	
-	$dataset = Get-VstsInput -Name Dataset
+	$dataset = Get-VstsInput -Name dataset
 	$datasetId = Invoke-Expression "$toolsPath/Scripts/Get-PowerBIDataset.ps1 -Name '$dataset' -GroupId '$groupId'"
 
 	if ($datasetId)

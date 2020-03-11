@@ -7,7 +7,7 @@ $toolsPath = Get-VstsTaskVariable -Name "PowerBI_Tools_Path"
 Import-Module -Name "$toolsPath/Modules/MicrosoftPowerBIMgmt.Profile"
 
 # Connection
-$connection = Get-VstsInput -Name Connection
+$connection = Get-VstsInput -Name connection
 $endpoint = Get-VstsEndpoint -Name $connection
 $authScheme = $endpoint.Auth.Scheme
 $environment = $endpoint.Data.Environment

@@ -21,13 +21,13 @@
   "instanceNameFormat": "Power BI Workspace Create: $(Name)",
   "inputs": [
     {
-      "name": "Connection",
+      "name": "connection",
       "type": "connectedService:Power-BI",
       "label": "Power BI connection",
       "required": true
     },
     {
-      "name": "Name",
+      "name": "name",
       "type": "string",
       "label": "Name",
       "required": true,

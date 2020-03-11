@@ -21,20 +21,20 @@
   "instanceNameFormat": "Power BI Report Delete: $(Report)",
   "inputs": [
     {
-      "name": "Connection",
+      "name": "connection",
       "type": "connectedService:Power-BI",
       "label": "Power BI connection",
       "required": true
     },
     {
-      "name": "Workspace",
+      "name": "workspace",
       "type": "string",
       "label": "Workspace",
       "required": false,
       "helpMarkDown": "The ID or name of the workspace. If not specified, your personal workspace will be used."
     },
     {
-      "name": "Report",
+      "name": "report",
       "type": "string",
       "label": "Report",
       "required": true,

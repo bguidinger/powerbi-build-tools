@@ -14,7 +14,7 @@ try
 
 	Invoke-Expression "$toolsPath/Scripts/Connect-PowerBI.ps1"
 
-	$name = Get-VstsInput -Name Name
+	$name = Get-VstsInput -Name name
 	$body = @{ name = $name } | ConvertTo-Json
 
 	Invoke-PowerBIRestMethod -Method Post -Url "groups" -Body $body

@@ -21,13 +21,13 @@
   "instanceNameFormat": "Power BI Workspace Delete: $(Group)",
   "inputs": [
     {
-      "name": "Connection",
+      "name": "connection",
       "type": "connectedService:Power-BI",
       "label": "Power BI connection",
       "required": true
     },
     {
-      "name": "Workspace",
+      "name": "workspace",
       "type": "string",
       "label": "Workspace",
       "required": true,
