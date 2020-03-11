@@ -15,7 +15,7 @@ try
 	# Connect
 	Invoke-Expression "$toolsPath/Scripts/Connect-PowerBI.ps1"
 
-	$group       = Get-VstsInput -Name Group
+	$group       = Get-VstsInput -Name Workspace
 	$path        = Get-VstsInput -Name Path
 	$connections = Get-VstsInput -Name ConnectionStrings | ConvertFrom-Json -ErrorAction SilentlyContinue
 

@@ -1,8 +1,8 @@
 {
-  "id": "DF1CFF5F-8EC0-4102-BC87-C70ABDB3DC51",
-  "name": "PowerBI.Import",
+  "id": "6C4AF98D-5B3D-45E7-9B51-50E2C6642FB2",
+  "name": "ImportFile",
   "friendlyName": "Power BI Import File",
-  "description": "Imports a file to a workspace.",
+  "description": "Import a file.",
   "author": "bguidinger",
   "category": "Azure Pipelines",
   "visibility": [
@@ -20,17 +20,17 @@
   "instanceNameFormat": "Power BI Import: $(Path)",
   "inputs": [
     {
-      "name": "ServiceEndpoint",
+      "name": "Connection",
       "type": "connectedService:Power-BI",
-      "label": "Service Endpoint",
+      "label": "Power BI connection",
       "required": true
     },
     {
-      "name": "Group",
+      "name": "Workspace",
       "type": "string",
       "label": "Workspace",
       "required": false,
-      "helpMarkDown": "Specify either the ID or the Name of the workspace.  If not specified, your personal workspace will be used."
+      "helpMarkDown": "The ID or name of the workspace. If not specified, your personal workspace will be used."
     },
     {
       "name": "Path",

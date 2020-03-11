@@ -28,9 +28,6 @@
     },
     {
       "path": "images/screenshot-2.png"
-    },
-    {
-      "path": "images/screenshot-3.png"
     }
   ],
   "content": {
@@ -62,30 +59,30 @@
   },
   "files": [
     {
-      "path": "tasks/ToolInstaller"
+      "path": "tasks/DatasetDelete"
+    },
+    {
+      "path": "tasks/DatasetRefresh"
     },
     {
       "path": "tasks/ImportFile"
     },
     {
-      "path": "tasks/GroupCreate"
-    },
-    {
-      "path": "tasks/GroupDelete"
-    },
-    {
       "path": "tasks/ReportDelete"
     },
     {
-      "path": "tasks/DatasetDelete"
+      "path": "tasks/ToolInstaller"
     },
     {
-      "path": "tasks/DatasetRefresh"
+      "path": "tasks/WorkspaceCreate"
+    },
+    {
+      "path": "tasks/WorkspaceDelete"
     }
   ],
   "contributions": [
     {
-      "id": "bguidinger.powerbi-build-tools.service-endpoint",
+      "id": "ServiceEndpoint",
       "description": "Power BI",
       "type": "ms.vss-endpoint.service-endpoint-type",
       "icons": {
@@ -221,57 +218,7 @@
       }
     },
     {
-      "id": "bguidinger.powerbi-build-tools.task.toolinstaller",
-      "type": "ms.vss-distributed-task.task",
-      "targets": [
-        "ms.vss-distributed-task.tasks"
-      ],
-      "properties": {
-        "name": "tasks/ToolInstaller"
-      }
-    },
-    {
-      "id": "bguidinger.powerbi-build-tools.task.import",
-      "type": "ms.vss-distributed-task.task",
-      "targets": [
-        "ms.vss-distributed-task.tasks"
-      ],
-      "properties": {
-        "name": "tasks/ImportFile"
-      }
-    },
-    {
-      "id": "bguidinger.powerbi-build-tools.task.createworkspace",
-      "type": "ms.vss-distributed-task.task",
-      "targets": [
-        "ms.vss-distributed-task.tasks"
-      ],
-      "properties": {
-        "name": "tasks/GroupCreate"
-      }
-    },
-    {
-      "id": "bguidinger.powerbi-build-tools.task.deleteworkspace",
-      "type": "ms.vss-distributed-task.task",
-      "targets": [
-        "ms.vss-distributed-task.tasks"
-      ],
-      "properties": {
-        "name": "tasks/GroupDelete"
-      }
-    },
-    {
-      "id": "bguidinger.powerbi-build-tools.task.reportdelete",
-      "type": "ms.vss-distributed-task.task",
-      "targets": [
-        "ms.vss-distributed-task.tasks"
-      ],
-      "properties": {
-        "name": "tasks/ReportDelete"
-      }
-    },
-    {
-      "id": "bguidinger.powerbi-build-tools.task.datasetdelete",
+      "id": "DatasetDelete",
       "type": "ms.vss-distributed-task.task",
       "targets": [
         "ms.vss-distributed-task.tasks"
@@ -281,13 +228,63 @@
       }
     },
     {
-      "id": "bguidinger.powerbi-build-tools.task.datasetrefresh",
+      "id": "DatasetRefresh",
       "type": "ms.vss-distributed-task.task",
       "targets": [
         "ms.vss-distributed-task.tasks"
       ],
       "properties": {
         "name": "tasks/DatasetRefresh"
+      }
+    },
+    {
+      "id": "ImportFile",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "tasks/ImportFile"
+      }
+    },
+    {
+      "id": "ReportDelete",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "tasks/ReportDelete"
+      }
+    },
+    {
+      "id": "ToolInstaller",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "tasks/ToolInstaller"
+      }
+    },
+    {
+      "id": "WorkspaceCreate",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "tasks/WorkspaceCreate"
+      }
+    },
+    {
+      "id": "WorkspaceDelete",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "tasks/WorkspaceDelete"
       }
     }
   ]

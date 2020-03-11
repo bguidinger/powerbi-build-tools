@@ -14,7 +14,7 @@ try
 
 	Invoke-Expression "$toolsPath/Scripts/Connect-PowerBI.ps1"
 
-	$group = Get-VstsInput -Name Group
+	$group = Get-VstsInput -Name Workspace
 	$groupId = Invoke-Expression "$toolsPath/Scripts/Get-PowerBIGroup.ps1 -Name '$group'"
 	
 	$report = Get-VstsInput -Name Report

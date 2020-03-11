@@ -1,8 +1,8 @@
 {
-  "id": "AD266AD9-F30E-41DE-A093-988972A0BD7A",
-  "name": "PowerBI.ToolInstaller",
+  "id": "7363EF77-C6B8-4351-9ACA-761340A689C1",
+  "name": "ToolInstaller",
   "friendlyName": "Power BI Tool Installer",
-  "description": "Installs the Power BI Build Tools.",
+  "description": "Install the Power BI Build Tools.",
   "author": "bguidinger",
   "category": "Azure Pipelines",
   "visibility": [

@@ -1,8 +1,8 @@
 {
-  "id": "1A3A1569-D3FD-4229-8F5D-40F47D51EF84",
-  "name": "PowerBI.DatasetDelete",
+  "id": "D10FBFD5-5D9D-4B8D-B459-49E179AEF560",
+  "name": "DatasetDelete",
   "friendlyName": "Power BI Dataset Delete",
-  "description": "Deletes a dataset.",
+  "description": "Delete a dataset.",
   "author": "bguidinger",
   "category": "Azure Pipelines",
   "visibility": [
@@ -20,24 +20,24 @@
   "instanceNameFormat": "Power BI Dataset Delete: $(Dataset)",
   "inputs": [
     {
-      "name": "ServiceEndpoint",
+      "name": "Connection",
       "type": "connectedService:Power-BI",
-      "label": "Service Endpoint",
+      "label": "Power BI connection",
       "required": true
     },
     {
-      "name": "Group",
+      "name": "Workspace",
       "type": "string",
       "label": "Workspace",
       "required": false,
-      "helpMarkDown": "Specify either the ID or the Name of the workspace.  If not specified, your personal workspace will be used."
+      "helpMarkDown": "The ID or name of the workspace. If not specified, your personal workspace will be used."
     },
     {
       "name": "Dataset",
       "type": "string",
       "label": "Dataset",
       "required": true,
-      "helpMarkDown": "Specify either the ID or the Name of the dataset."
+      "helpMarkDown": "The ID or name of the dataset."
     }
   ],
   "execution": {
