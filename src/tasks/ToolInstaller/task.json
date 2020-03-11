@@ -12,9 +12,6 @@
   "demands": [
     "powershell"
   ],
-  "satisfies": [
-    "powerbi"
-  ],
   "version": {
     "Major": "1",
     "Minor": "0",
