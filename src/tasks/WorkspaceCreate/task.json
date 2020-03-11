@@ -1,7 +1,7 @@
 {
   "id": "65472E0D-1D99-4272-9EA2-EB0100702FFD",
   "name": "WorkspaceCreate",
-  "friendlyName": "Power BI Create Workspace",
+  "friendlyName": "Power BI Workspace Create",
   "description": "Create a workspace.",
   "author": "bguidinger",
   "category": "Azure Pipelines",
@@ -17,7 +17,7 @@
     "Minor": "0",
     "Patch": "0"
   },
-  "instanceNameFormat": "Power BI Create Workspace: $(Name)",
+  "instanceNameFormat": "Power BI Workspace Create: $(Name)",
   "inputs": [
     {
       "name": "Connection",

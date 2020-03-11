@@ -1,7 +1,7 @@
 {
   "id": "D840050B-C7CF-4952-80F5-C4EBE90303C6",
   "name": "WorkspaceDelete",
-  "friendlyName": "Power BI Delete Workspace",
+  "friendlyName": "Power BI Workspace Delete",
   "description": "Delete a workspace.",
   "author": "bguidinger",
   "category": "Azure Pipelines",
@@ -17,7 +17,7 @@
     "Minor": "0",
     "Patch": "0"
   },
-  "instanceNameFormat": "Power BI Delete Workspace: $(Group)",
+  "instanceNameFormat": "Power BI Workspace Delete: $(Group)",
   "inputs": [
     {
       "name": "Connection",
