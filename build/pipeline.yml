@@ -8,6 +8,8 @@ variables:
   Version.MajorMinor: 1.2
   Version.Revision: $[counter(variables['Version.MajorMinor'], 0)]
 
+name: $(Version.MajorMinor).$(Version.Revision)
+
 steps:
 - powershell: |
    Set-Location $(Agent.TempDirectory)
@@ -37,11 +39,9 @@ steps:
   displayName: 'Package Extension'
   inputs:
     rootFolder: '$(Build.SourcesDirectory)/src'
-    outputPath: '$(Build.StagingDirectory)/bguidinger.powerbi-build-tools-$(Version.MajorMinor).$(Version.Revision).vsix'
+    outputPath: '$(Build.StagingDirectory)/bguidinger.powerbi-build-tools.vsix'
     extensionVersion: $(Version.MajorMinor).$(Version.Revision)
     updateTasksVersion: true
-    extensionPricing: free
-    extensionVisibility: public_preview
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Build Artifacts'
