@@ -38,7 +38,7 @@
       "type": "string",
       "label": "Report",
       "required": true,
-      "helpMarkDown": "Specify either the ID or the Name of the report."
+      "helpMarkDown": "The ID or name of the report."
     }
   ],
   "execution": {
