@@ -42,6 +42,8 @@ steps:
     outputPath: '$(Build.StagingDirectory)/bguidinger.powerbi-build-tools.vsix'
     extensionVersion: $(Version.MajorMinor).$(Version.Revision)
     updateTasksVersion: true
+    extensionPricing: free
+    extensionVisibility: public_preview
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Build Artifacts'
