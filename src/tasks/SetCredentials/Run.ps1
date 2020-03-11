@@ -15,9 +15,22 @@ Try
 	Connect-PowerBI -Endpoint (Get-VstsEndpoint -Name (Get-VstsInput -Name Connection))
 
 	# Execute
+	$Group = Get-VstsInput -Name Workspace
+	$Type = Get-VstsInput -Name Type
 	$Name = Get-VstsInput -Name Name
-	
-	New-PowerBIGroup -Name $Name
+	$ConnectionStrings = Get-VstsInput -Name ConnectionStrings | ConvertFrom-Json -ErrorAction SilentlyContinue
+
+	switch ($Type)
+	{
+		"Report"
+		{
+			Set-PowerBIReportCredentials -Group $Group -Report Name -ConnectionStrings $ConnectionStrings
+		}
+		"Dataset"
+		{
+			Set-PowerBIReportCredentials -Group $Group -Report Name -ConnectionStrings $ConnectionStrings
+		}
+	}
 }
 Finally
 {

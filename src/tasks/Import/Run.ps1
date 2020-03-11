@@ -1,141 +1,36 @@
-[CmdletBinding()]
-
-param()
-
 Trace-VstsEnteringInvocation $MyInvocation
 
-try
+Try
 {
-	$toolsPath = Get-VstsTaskVariable -Name "PowerBI_Tools_Path"
-	if (-not $toolsPath)
+	If (-not ($toolsPath = Get-VstsTaskVariable -Name "PowerBI_Tools_Path"))
 	{
 		Write-VstsTaskError -Message "Please add the 'Power BI Tool Installer' before this task."
 	}
+	Else
+	{
+		Import-Module "$toolsPath/Modules/PowerBI"
+	}
 
 	# Connect
-	Invoke-Expression "$toolsPath/Scripts/Connect-PowerBI.ps1"
+	Connect-PowerBI -Endpoint (Get-VstsEndpoint -Name (Get-VstsInput -Name Connection))
 
-	$group       = Get-VstsInput -Name workspace
-	$path        = Get-VstsInput -Name path
-	$connections = Get-VstsInput -Name connectionStrings | ConvertFrom-Json -ErrorAction SilentlyContinue
+	# Execute
+	$Group = Get-VstsInput -Name Workspace
+	$Path = Get-VstsInput -Name Path
+	$ConnectionStrings = Get-VstsInput -Name ConnectionStrings | ConvertFrom-Json -ErrorAction SilentlyContinue
 
-	$files = Get-ChildItem -Path $path
+	$Files = Get-ChildItem -Path $Path
 
-	foreach ($file in $files)
+	foreach ($File in $Files)
 	{
-		$boundary   = [System.Guid]::NewGuid().ToString()
-		$fileName   = [System.IO.Path]::GetFileName($file)
-		$extension  = [System.IO.Path]::GetExtension($file)
-		$reportName = [System.IO.Path]::GetFileNameWithoutExtension($file)
-		
-		if ($extension -eq '.rdl')
-		{
-			$contentType = "application/rdl"
-			$xml         = [Xml](Get-Content $file.FullName)
+		$GroupId = Get-PowerBIGroup -Group $group -Id
 
-			$dataSources = $xml.Report.DataSources.ChildNodes
+		$Import = New-PowerBIImport -Group $GroupId -File $File -ConnectionStrings $ConnectionStrings
 
-			foreach ($dataSource in $dataSources)
-			{
-				if ($connectionString = $connections.$($dataSource.Name)) {
-					$dataSource.ConnectionProperties.ConnectString = $connectionString
-				}
-			}
-
-			$fileBody = $xml.InnerXml
-		}
-		else
-		{
-			$contentType = "application/octet-stream"
-			$fileBytes   = [System.IO.File]::ReadAllBytes($file.FullName)
-			$encoding    = [System.Text.Encoding]::GetEncoding("ISO-8859-1")
-			$fileBody    = $encoding.GetString($fileBytes)
-		}
-
-		$bodyRaw = "--{0}`r`nContent-Disposition: form-data`r`nContent-Type: {1}`r`n`r`n{2}`r`n--{0}--`r`n"
-		$body = $bodyRaw -f $boundary, $contentType, $fileBody
-
-		$groupId  = Invoke-Expression "$toolsPath/Scripts/Get-PowerBIGroup.ps1 -Name '$group'"
-		$reportId = Invoke-Expression "$toolsPath/Scripts/Get-PowerBIReport.ps1 -Name '$reportName' -GroupId '$groupId'"
-		
-		if ($reportId)
-		{
-			$nameConflict = "Overwrite"
-		}
-		else
-		{
-			$nameConflict = "Abort"
-		}
-
-		if ($groupId)
-		{
-			$url = "groups/$groupId/imports?datasetDisplayName=$fileName&nameConflict=$nameConflict"
-		}
-		else
-		{
-			$url = "imports?datasetDisplayName=$fileName&nameConflict=$nameConflict"
-		}
-
-		Write-Host $url
-
-		try
-		{
-			$importId = (Invoke-PowerBIRestMethod -Method Post -Url $url -Body $body -ContentType "multipart/form-data" | ConvertFrom-Json).id
-		}
-		catch
-		{
-			Resolve-PowerBIError -Last
-			throw
-		}
-
-
-		# Update report data source credentials
-		if ($extension -eq '.rdl')
-		{
-			# Sleeping because the API doesn't track the import right away
-			Start-Sleep -Milliseconds 500
-
-			$import = Invoke-Expression "$toolsPath/Scripts/Get-PowerBIImport.ps1 -ImportId '$importId' -GroupId '$groupId'"
-			$reportId = $import.reports.id
-			$reportDataSources = Invoke-Expression "$toolsPath/Scripts/Get-PowerBIReportDataSources.ps1 -ReportId '$reportId' -GroupId '$groupId'"
-
-			# Set Credentials
-			foreach ($dataSource in $dataSources)
-			{
-				if ($connectionString = $connections.$($dataSource.Name))
-				{
-					$dataProvider = $dataSource.ConnectionProperties.DataProvider
-					if ($dataProvider -eq "SQLAZURE")
-					{
-						$builder = New-Object System.Data.SqlClient.SqlConnectionStringBuilder($connectionString)
-
-						$candidates = $reportDataSources | ? {$_.connectionDetails.server -eq $builder.DataSource -and $_.connectionDetails.database -eq $builder.InitialCatalog}
-						foreach ($candidate in $candidates)
-						{
-							$body = @{
-								credentialDetails = @{
-									credentialType = "Basic";
-									credentials = "{`"credentialData`":[{`"name`":`"username`", `"value`":`"$($builder.UserID)`"},{`"name`":`"password`", `"value`":`"$($builder.Password)`"}]}";
-									encryptedConnection = "Encrypted";
-									encryptionAlgorithm = "None";
-									privacyLevel = "None"
-								}
-							} | ConvertTo-Json
-
-							$gatewayId = $candidate.gatewayId
-							$datasourceId = $candidate.datasourceId
-
-							$url = "gateways/$gatewayId/datasources/$datasourceId"
-							$url
-							Invoke-PowerBIRestMethod -Method Patch -Url $url -Body $body
-						}
-					}
-				}
-			}
-		}
+		Set-PowerBIReportCredentials -Group $GroupId -Report $Import.reports.id -connectionStrings $ConnectionStrings
 	}
 }
-finally
+Finally
 {
 	Trace-VstsLeavingInvocation $MyInvocation
 }

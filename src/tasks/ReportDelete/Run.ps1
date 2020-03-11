@@ -1,40 +1,24 @@
-[CmdletBinding()]
-
-param()
-
 Trace-VstsEnteringInvocation $MyInvocation
 
 try
 {
-	$toolsPath = Get-VstsTaskVariable -Name "PowerBI_Tools_Path"
-	if (-not $toolsPath)
+	If (-not ($toolsPath = Get-VstsTaskVariable -Name "PowerBI_Tools_Path"))
 	{
 		Write-VstsTaskError -Message "Please add the 'Power BI Tool Installer' before this task."
 	}
-
-	Invoke-Expression "$toolsPath/Scripts/Connect-PowerBI.ps1"
-
-	$group = Get-VstsInput -Name workspace
-	$groupId = Invoke-Expression "$toolsPath/Scripts/Get-PowerBIGroup.ps1 -Name '$group'"
-	
-	$report = Get-VstsInput -Name report
-	$reportId = Invoke-Expression "$toolsPath/Scripts/Get-PowerBIReport.ps1 -Name '$report' -GroupId '$groupId'"
-
-	if ($reportId)
+	Else
 	{
-		if ($groupId)
-		{
-			Invoke-PowerBIRestMethod -Method Delete -Url "groups/$groupId/reports/$reportId"
-		}
-		else
-		{
-			Invoke-PowerBIRestMethod -Method Delete -Url "reports/$reportId"
-		}
+		Import-Module "$toolsPath/Modules/PowerBI"
 	}
-	else
-	{
-		Write-VstsTaskError -Message "Unable to find a report with the name '$name'"
-	}
+
+	# Connect
+	Connect-PowerBI -Endpoint (Get-VstsEndpoint -Name (Get-VstsInput -Name Connection))
+
+	# Execute
+	$Group = Get-VstsInput -Name Workspace
+	$Report = Get-VstsInput -Name Report
+
+	Remove-PowerBIReport -Group $Group -Report $Report
 }
 finally
 {

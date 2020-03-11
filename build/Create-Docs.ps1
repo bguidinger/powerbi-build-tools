@@ -47,7 +47,7 @@ foreach($task in $tasks)
     {
         $taskDef.inputs[0].type = 'string'
 
-        $inputYaml = $taskDef.inputs | % { "    $($_.name): {$($_.type)}" }
+        $inputYaml = $taskDef.inputs | % { "    $($_.aliases[0]): {$($_.type)}" }
         $inputTable = $taskDef.inputs | % { "| $($_.name) | $($_.label) | $($_.required) | $($_.type) | $($_.helpMarkDown)" }
 
         $schema = $schemaTemplate -f $taskName, $taskMajorVersion, ($schemaInputsTemplate -f ($inputYaml -join "`r`n"))

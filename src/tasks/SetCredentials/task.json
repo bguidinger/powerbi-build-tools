@@ -1,8 +1,8 @@
 {
-  "id": "77680253-A4B5-41FE-BFE5-7FDCE6E8C289",
-  "name": "PowerBIImport",
-  "friendlyName": "Power BI Import",
-  "description": "Import a file or folder.",
+  "id": "56D429CF-D06D-4DE4-A7E0-133FB47A116A",
+  "name": "PowerBISetCredentials",
+  "friendlyName": "Power BI Set Credentials",
+  "description": "Sets credentials for a datasource.",
   "author": "bguidinger",
   "category": "Azure Pipelines",
   "visibility": [
@@ -17,7 +17,7 @@
     "Minor": "0",
     "Patch": "0"
   },
-  "instanceNameFormat": "Power BI Import: $(Path)",
+  "instanceNameFormat": "Power BI Set Credentials: $(Name)",
   "inputs": [
     {
       "name": "Connection",
@@ -40,14 +40,28 @@
       "helpMarkDown": "The ID or name of the workspace. If not specified, your personal workspace will be used."
     },
     {
-      "name": "Path",
+      "name": "Type",
       "aliases": [
-        "path"
+        "type"
       ],
-      "type": "filePath",
-      "label": "Path",
+      "type": "pickList",
+      "label": "Type",
       "required": true,
-      "helpMarkDown": "The path to the file or folder to import."
+      "options": {
+        "Dataset": "Dataset",
+        "Report": "Report"
+      },
+      "defaultValue": "Dataset"
+    },
+    {
+      "name": "Name",
+      "aliases": [
+        "name"
+      ],
+      "type": "string",
+      "label": "Name",
+      "required": true,
+      "helpMarkDown": "The name of the dataset or report."
     },
     {
       "name": "ConnectionStrings",

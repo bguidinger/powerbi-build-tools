@@ -17,16 +17,23 @@
     "Minor": "0",
     "Patch": "0"
   },
-  "instanceNameFormat": "Power BI Workspace Delete: $(Group)",
+  "instanceNameFormat": "Power BI Workspace Delete: $(Workspace)",
   "inputs": [
     {
-      "name": "connection",
+      "name": "Connection",
+      "aliases": [
+        "connection"
+      ],
       "type": "connectedService:Power-BI",
       "label": "Power BI connection",
-      "required": true
+      "required": true,
+      "helpMarkDown": "The service connection to Power BI."
     },
     {
-      "name": "workspace",
+      "name": "Workspace",
+      "aliases": [
+        "workspace"
+      ],
       "type": "string",
       "label": "Workspace",
       "required": true,

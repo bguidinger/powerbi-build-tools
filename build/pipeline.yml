@@ -29,7 +29,6 @@ steps:
    }
   
    Set-Location ToolInstaller
-   New-Item -ItemType Directory Modules
    Save-Module -Name MicrosoftPowerBIMgmt.Profile -Path Modules
   displayName: 'Prepare Extension'
 
