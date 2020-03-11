@@ -218,7 +218,7 @@
       }
     },
     {
-      "id": "DatasetDelete",
+      "id": "PowerBIDatasetDelete",
       "type": "ms.vss-distributed-task.task",
       "targets": [
         "ms.vss-distributed-task.tasks"
@@ -228,7 +228,7 @@
       }
     },
     {
-      "id": "DatasetRefresh",
+      "id": "PowerBIDatasetRefresh",
       "type": "ms.vss-distributed-task.task",
       "targets": [
         "ms.vss-distributed-task.tasks"
@@ -238,7 +238,7 @@
       }
     },
     {
-      "id": "ImportFile",
+      "id": "PowerBIImportFile",
       "type": "ms.vss-distributed-task.task",
       "targets": [
         "ms.vss-distributed-task.tasks"
@@ -248,7 +248,7 @@
       }
     },
     {
-      "id": "ReportDelete",
+      "id": "PowerBIReportDelete",
       "type": "ms.vss-distributed-task.task",
       "targets": [
         "ms.vss-distributed-task.tasks"
@@ -258,7 +258,7 @@
       }
     },
     {
-      "id": "ToolInstaller",
+      "id": "PowerBIToolInstaller",
       "type": "ms.vss-distributed-task.task",
       "targets": [
         "ms.vss-distributed-task.tasks"
@@ -268,7 +268,7 @@
       }
     },
     {
-      "id": "WorkspaceCreate",
+      "id": "PowerBIWorkspaceCreate",
       "type": "ms.vss-distributed-task.task",
       "targets": [
         "ms.vss-distributed-task.tasks"
@@ -278,7 +278,7 @@
       }
     },
     {
-      "id": "WorkspaceDelete",
+      "id": "PowerBIWorkspaceDelete",
       "type": "ms.vss-distributed-task.task",
       "targets": [
         "ms.vss-distributed-task.tasks"

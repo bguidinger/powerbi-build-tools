@@ -1,6 +1,6 @@
 {
-  "id": "D10FBFD5-5D9D-4B8D-B459-49E179AEF560",
-  "name": "DatasetDelete",
+  "id": "264302A3-4369-42BF-9533-1D5DF0888288",
+  "name": "PowerBIDatasetDelete",
   "friendlyName": "Power BI Dataset Delete",
   "description": "Delete a dataset.",
   "author": "bguidinger",

@@ -1,6 +1,6 @@
 {
-  "id": "5A22C382-DFAB-45DC-81A9-119B60BF149E",
-  "name": "DatasetRefresh",
+  "id": "D1BE0DE0-B3D1-444C-8038-C7D8666C357A",
+  "name": "PowerBIDatasetRefresh",
   "friendlyName": "Power BI Dataset Refresh",
   "description": "Refresh a dataset.",
   "author": "bguidinger",

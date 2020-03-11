@@ -1,6 +1,6 @@
 {
-  "id": "6C4AF98D-5B3D-45E7-9B51-50E2C6642FB2",
-  "name": "ImportFile",
+  "id": "18EE7BE7-E872-4EA9-ACBE-8501FE92487C",
+  "name": "PowerBIImportFile",
   "friendlyName": "Power BI Import File",
   "description": "Import a file.",
   "author": "bguidinger",

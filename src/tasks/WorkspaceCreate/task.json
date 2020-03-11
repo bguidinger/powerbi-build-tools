@@ -1,6 +1,6 @@
 {
-  "id": "65472E0D-1D99-4272-9EA2-EB0100702FFD",
-  "name": "WorkspaceCreate",
+  "id": "32038C2E-ABFC-497B-916C-9BC107C73F36",
+  "name": "PowerBIWorkspaceCreate",
   "friendlyName": "Power BI Workspace Create",
   "description": "Create a workspace.",
   "author": "bguidinger",
