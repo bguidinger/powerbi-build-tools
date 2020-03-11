@@ -1,6 +1,6 @@
 {
-  "id": "0095F7DF-9BC7-4681-975A-17E090171E86",
-  "name": "PowerBI.DeleteWorkspace",
+  "id": "CC9FD5CC-CD70-46D6-BF0D-E68027B2B145",
+  "name": "DeleteWorkspace",
   "friendlyName": "Power BI Delete Workspace",
   "description": "Deletes a workspace.",
   "author": "bguidinger",
