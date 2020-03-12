@@ -59,28 +59,25 @@
   },
   "files": [
     {
-      "path": "tasks/DatasetDelete"
+      "path": "tasks/Create"
     },
     {
-      "path": "tasks/DatasetRefresh"
+      "path": "tasks/Delete"
+    },
+    {
+      "path": "tasks/DataRefresh"
+    },
+    {
+      "path": "tasks/DataRefreshSchedule"
     },
     {
       "path": "tasks/Import"
-    },
-    {
-      "path": "tasks/ReportDelete"
     },
     {
       "path": "tasks/SetCredentials"
     },
     {
       "path": "tasks/ToolInstaller"
-    },
-    {
-      "path": "tasks/WorkspaceCreate"
-    },
-    {
-      "path": "tasks/WorkspaceDelete"
     }
   ],
   "contributions": [
@@ -221,23 +218,43 @@
       }
     },
     {
-      "id": "PowerBIDatasetDelete",
+      "id": "PowerBICreate",
       "type": "ms.vss-distributed-task.task",
       "targets": [
         "ms.vss-distributed-task.tasks"
       ],
       "properties": {
-        "name": "tasks/DatasetDelete"
+        "name": "tasks/Create"
       }
     },
     {
-      "id": "PowerBIDatasetRefresh",
+      "id": "PowerBIDelete",
       "type": "ms.vss-distributed-task.task",
       "targets": [
         "ms.vss-distributed-task.tasks"
       ],
       "properties": {
-        "name": "tasks/DatasetRefresh"
+        "name": "tasks/Delete"
+      }
+    },
+    {
+      "id": "PowerBIRefreshData",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "tasks/DataRefresh"
+      }
+    },
+    {
+      "id": "PowerBIRefreshDataSchedule",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "tasks/DataRefreshSchedule"
       }
     },
     {
@@ -248,16 +265,6 @@
       ],
       "properties": {
         "name": "tasks/Import"
-      }
-    },
-    {
-      "id": "PowerBIReportDelete",
-      "type": "ms.vss-distributed-task.task",
-      "targets": [
-        "ms.vss-distributed-task.tasks"
-      ],
-      "properties": {
-        "name": "tasks/ReportDelete"
       }
     },
     {
@@ -278,26 +285,6 @@
       ],
       "properties": {
         "name": "tasks/ToolInstaller"
-      }
-    },
-    {
-      "id": "PowerBIWorkspaceCreate",
-      "type": "ms.vss-distributed-task.task",
-      "targets": [
-        "ms.vss-distributed-task.tasks"
-      ],
-      "properties": {
-        "name": "tasks/WorkspaceCreate"
-      }
-    },
-    {
-      "id": "PowerBIWorkspaceDelete",
-      "type": "ms.vss-distributed-task.task",
-      "targets": [
-        "ms.vss-distributed-task.tasks"
-      ],
-      "properties": {
-        "name": "tasks/WorkspaceDelete"
       }
     }
   ]

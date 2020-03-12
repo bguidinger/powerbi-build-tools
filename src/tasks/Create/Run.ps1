@@ -15,9 +15,16 @@ Try
 	Connect-PowerBI -Endpoint (Get-VstsEndpoint -Name (Get-VstsInput -Name Connection))
 
 	# Execute
-	$Group = Get-VstsInput -Name Workspace
+	$Type = Get-VstsInput -Name Type
+	$Name = Get-VstsInput -Name Name
 	
-	Remove-PowerBIGroup -Group $Group
+	switch ($Type)
+	{
+		"Workspace"
+		{
+			New-PowerBIGroup -Name $Name
+		}
+	}
 }
 Finally
 {

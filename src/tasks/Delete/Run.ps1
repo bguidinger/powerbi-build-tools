@@ -1,6 +1,6 @@
 Trace-VstsEnteringInvocation $MyInvocation
 
-try
+Try
 {
 	If (-not ($toolsPath = Get-VstsTaskVariable -Name "PowerBI_Tools_Path"))
 	{
@@ -16,11 +16,30 @@ try
 
 	# Execute
 	$Group = Get-VstsInput -Name Workspace
-	$Report = Get-VstsInput -Name Report
+	$Type = Get-VstsInput -Name Type
+	$Name = Get-VstsInput -Name Name
 
-	Remove-PowerBIReport -Group $Group -Report $Report
+	switch ($Type)
+	{
+		"Workspace"
+		{
+			Remove-PowerBIGroup -Group $Group
+		}
+		"Dataset"
+		{
+			Remove-PowerBIDataset -Group $Group -Dataset $Name
+		}
+		"Dataflow"
+		{
+			Remove-PowerBIDataflow -Group $Group -Dataflow $Name
+		}
+		"Report"
+		{
+			Remove-PowerBIReport -Group $Group -Report $Name
+		}
+	}	
 }
-finally
+Finally
 {
 	Trace-VstsLeavingInvocation $MyInvocation
 }

@@ -1,8 +1,8 @@
 {
-  "id": "56D429CF-D06D-4DE4-A7E0-133FB47A116A",
-  "name": "PowerBISetCredentials",
-  "friendlyName": "Power BI Set Credentials",
-  "description": "Sets credentials for the datasources of a dataset, dataflow, or report.",
+  "id": "6961BBD6-4D00-43EB-90D6-A8A95E9CBABC",
+  "name": "PowerBIDataRefreshSchedule",
+  "friendlyName": "Power BI Data Refresh Schedule",
+  "description": "Performs an action on a dataset or dataflow refresh schedule.",
   "author": "bguidinger",
   "category": "Azure Pipelines",
   "visibility": [
@@ -17,7 +17,7 @@
     "Minor": "0",
     "Patch": "0"
   },
-  "instanceNameFormat": "Power BI Set Credentials: $(Name)",
+  "instanceNameFormat": "Power BI Data Refresh Schedule: $(Name)",
   "inputs": [
     {
       "name": "Connection",
@@ -39,8 +39,7 @@
       "required": true,
       "options": {
         "Dataset": "Dataset",
-        "Dataflow": "Dataflow",
-        "Report": "Report"
+        "Dataflow": "Dataflow"
       }
     },
     {
@@ -61,23 +60,30 @@
       "type": "string",
       "label": "Name",
       "required": true,
-      "helpMarkDown": "The ID or name of the dataset, dataflow, or report."
+      "helpMarkDown": "The ID or name of the dataset or dataflow."
     },
     {
-      "name": "ConnectionStrings",
+      "name": "Action",
       "aliases": [
-        "connectionStrings"
+        "action"
       ],
-      "type": "multiLine",
-      "label": "Connection Strings",
-      "defaultValue": "",
-      "required": false,
-      "helpMarkDown": "Connection strings in JSON format. The keys are the names of the data sources.  The values are the connection strings.",
-      "properties": {
-        "resizable": "true",
-        "rows": "4",
-        "editorExtension": "ms.vss-services-azure.azure-servicebus-message-grid"
+      "type": "pickList",
+      "label": "Action",
+      "required": true,
+      "options": {
+        "SetState": "Set State"
       }
+    },
+    {
+      "name": "Enabled",
+      "aliases": [
+        "enabled"
+      ],
+      "type": "boolean",
+      "label": "Enabled",
+      "required": false,
+      "helpMarkDown": "Enables or disables the refresh schedule.",
+      "visibleRule": "Action = SetState"
     }
   ],
   "execution": {

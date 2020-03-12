@@ -1,8 +1,8 @@
 {
-  "id": "264302A3-4369-42BF-9533-1D5DF0888288",
-  "name": "PowerBIDatasetDelete",
-  "friendlyName": "Power BI Dataset Delete",
-  "description": "Delete a dataset.",
+  "id": "090A85A7-EBFC-4686-8F6F-5095815DBAFD",
+  "name": "PowerBIDelete",
+  "friendlyName": "Power BI Delete",
+  "description": "Deletes a workspace, dataset, dataflow, or report.",
   "author": "bguidinger",
   "category": "Azure Pipelines",
   "visibility": [
@@ -17,7 +17,7 @@
     "Minor": "0",
     "Patch": "0"
   },
-  "instanceNameFormat": "Power BI Dataset Delete: $(Dataset)",
+  "instanceNameFormat": "Power BI Delete: $(Name)",
   "inputs": [
     {
       "name": "Connection",
@@ -30,6 +30,21 @@
       "helpMarkDown": "The service connection to Power BI."
     },
     {
+      "name": "Type",
+      "aliases": [
+        "type"
+      ],
+      "type": "pickList",
+      "label": "Type",
+      "required": true,
+      "options": {
+        "Workspace": "Workspace",
+        "Dataset": "Dataset",
+        "Dataflow": "Dataflow",
+        "Report": "Report"
+      }
+    },
+    {
       "name": "Workspace",
       "aliases": [
         "workspace"
@@ -37,17 +52,18 @@
       "type": "string",
       "label": "Workspace",
       "required": false,
-      "helpMarkDown": "The ID or name of the workspace. If not specified, your personal workspace will be used."
+      "helpMarkDown": "The ID or name of the workspace. If not specified, your personal workspace will be used.",
+      "visibleRule": "Type != Workspace"
     },
     {
-      "name": "Dataset",
+      "name": "Name",
       "aliases": [
-        "dataset"
+        "name"
       ],
       "type": "string",
-      "label": "Dataset",
+      "label": "Name",
       "required": true,
-      "helpMarkDown": "The ID or name of the dataset."
+      "helpMarkDown": "The ID or name of the object."
     }
   ],
   "execution": {
