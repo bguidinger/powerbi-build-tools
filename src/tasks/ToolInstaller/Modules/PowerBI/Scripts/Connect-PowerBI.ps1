@@ -27,21 +27,35 @@ Function Connect-PowerBI
 	$authScheme = $Endpoint.Auth.Scheme
 	$environment = $Endpoint.Data.Environment
 
-	If ($authScheme -eq "UsernamePassword")
+	Try
 	{
-		$username = $Endpoint.Auth.Parameters.Username
-		$password = ConvertTo-SecureString $Endpoint.Auth.Parameters.Password -AsPlainText -Force
-		$credential = New-Object System.Management.Automation.PSCredential $username, $password
+		If ($authScheme -eq "UsernamePassword")
+		{
+			$username = $Endpoint.Auth.Parameters.Username
+			$password = ConvertTo-SecureString $Endpoint.Auth.Parameters.Password -AsPlainText -Force
+			$credential = New-Object System.Management.Automation.PSCredential $username, $password
 
-		Connect-PowerBIServiceAccount -Environment $environment -Credential $credential
+			$Connection = Connect-PowerBIServiceAccount -Environment $environment -Credential $credential
+		}
+		Else
+		{
+			$tenantId = $Endpoint.Auth.Parameters.TenantId	
+			$clientId = $Endpoint.Auth.Parameters.ClientId
+			$clientSecret = ConvertTo-SecureString $Endpoint.Auth.Parameters.ClientSecret -AsPlainText -Force
+			$credential = New-Object System.Management.Automation.PSCredential $clientId, $clientSecret
+
+			$Connection = Connect-PowerBIServiceAccount -Environment $environment -Tenant $tenantId -Credential $credential -ServicePrincipal
+		}
 	}
-	Else
+	Finally
 	{
-		$tenantId = $Endpoint.Auth.Parameters.TenantId	
-		$clientId = $Endpoint.Auth.Parameters.ClientId
-		$clientSecret = ConvertTo-SecureString $Endpoint.Auth.Parameters.ClientSecret -AsPlainText -Force
-		$credential = New-Object System.Management.Automation.PSCredential $clientId, $clientSecret
-
-		Connect-PowerBIServiceAccount -Environment $environment -Tenant $tenantId -Credential $credential -ServicePrincipal
+		If ($Connection)
+		{
+			Write-Host "Connected to $($script:EndpointUrl)"
+		}
+		Else
+		{
+			Write-Error "Unable to connect to Power BI"
+		}
 	}
 }

@@ -8,7 +8,7 @@ Try
 	}
 	Else
 	{
-		Import-Module "$toolsPath/Modules/PowerBI"
+		Import-Module "$toolsPath/Modules/PowerBI" -Force
 	}
 
 	# Connect

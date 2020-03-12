@@ -28,9 +28,11 @@ Function Set-PowerBICredentials
 			$gatewayId = $Candidate.gatewayId
 			$datasourceId = $Candidate.datasourceId
 
+			Write-Host "Setting credentials: $($Builder.DataSource):$($Builder.InitialCatalog)"
+
 			$Url = Get-PowerBIUrl -Url "gateways/$gatewayId/datasources/$datasourceId"
 
-			Invoke-PowerBI -Method Patch -Url $Url -Body $Body
+			$Response = Invoke-PowerBI -Method Patch -Url $Url -Body $Body
 		}
 	}
 }
