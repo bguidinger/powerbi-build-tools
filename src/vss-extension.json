@@ -71,6 +71,9 @@
       "path": "tasks/ReportDelete"
     },
     {
+      "path": "tasks/SetCredentials"
+    },
+    {
       "path": "tasks/ToolInstaller"
     },
     {
@@ -255,6 +258,16 @@
       ],
       "properties": {
         "name": "tasks/ReportDelete"
+      }
+    },
+    {
+      "id": "PowerBISetCredentials",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "tasks/SetCredentials"
       }
     },
     {

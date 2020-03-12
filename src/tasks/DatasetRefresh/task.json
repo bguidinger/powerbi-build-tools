@@ -20,20 +20,30 @@
   "instanceNameFormat": "Power BI Dataset Refresh: $(Dataset)",
   "inputs": [
     {
-      "name": "connection",
+      "name": "Connection",
+      "aliases": [
+        "connection"
+      ],
       "type": "connectedService:Power-BI",
       "label": "Power BI connection",
-      "required": true
+      "required": true,
+      "helpMarkDown": "The service connection to Power BI."
     },
     {
-      "name": "workspace",
+      "name": "Workspace",
+      "aliases": [
+        "workspace"
+      ],
       "type": "string",
       "label": "Workspace",
       "required": false,
       "helpMarkDown": "The ID or name of the workspace. If not specified, your personal workspace will be used."
     },
     {
-      "name": "dataset",
+      "name": "Dataset",
+      "aliases": [
+        "dataset"
+      ],
       "type": "string",
       "label": "Dataset",
       "required": true,

@@ -1,43 +1,26 @@
-[CmdletBinding()]
-
-param()
-
 Trace-VstsEnteringInvocation $MyInvocation
 
-try
+Try
 {
-	$toolsPath = Get-VstsTaskVariable -Name "PowerBI_Tools_Path"
-	if (-not $toolsPath)
+	If (-not ($toolsPath = Get-VstsTaskVariable -Name "PowerBI_Tools_Path"))
 	{
 		Write-VstsTaskError -Message "Please add the 'Power BI Tool Installer' before this task."
 	}
-
-	Invoke-Expression "$toolsPath/Scripts/Connect-PowerBI.ps1"
-
-	$group = Get-VstsInput -Name workspace
-	$groupId = Invoke-Expression "$toolsPath/Scripts/Get-PowerBIGroup.ps1 -Name '$group'"
-
-	$dataset = Get-VstsInput -Name dataset
-	$datasetId = Invoke-Expression "$toolsPath/Scripts/Get-PowerBIDataset.ps1 -Name '$dataset' -GroupId '$groupId'"
-
-	if ($datasetId)
+	Else
 	{
-		$body = @{ notifyOption = "NoNotification" } | ConvertTo-Json
-		if ($groupId)
-		{
-			Invoke-PowerBIRestMethod -Method Post -Url "groups/$groupId/datasets/$datasetId/refreshes" -Body $body
-		}
-		else
-		{
-			Invoke-PowerBIRestMethod -Method Post -Url "datasets/$datasetId/refreshes" -Body $body
-		}
+		Import-Module "$toolsPath/Modules/PowerBI"
 	}
-	else
-	{
-		Write-VstsTaskError -Message "Unable to find a workspace with the name '$name'"
-	}
+
+	# Connect
+	Connect-PowerBI -Endpoint (Get-VstsEndpoint -Name (Get-VstsInput -Name Connection))
+
+	# Execute
+	$Group = Get-VstsInput -Name Workspace
+	$Dataset = Get-VstsInput -Name Dataset
+
+	Update-PowerBIDataset -Group $Group -Dataset $Dataset
 }
-finally
+Finally
 {
 	Trace-VstsLeavingInvocation $MyInvocation
 }

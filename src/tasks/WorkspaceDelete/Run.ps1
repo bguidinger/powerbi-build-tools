@@ -1,32 +1,25 @@
-[CmdletBinding()]
-
-param()
-
 Trace-VstsEnteringInvocation $MyInvocation
 
-try
+Try
 {
-	$toolsPath = Get-VstsTaskVariable -Name "PowerBI_Tools_Path"
-	if (-not $toolsPath)
+	If (-not ($toolsPath = Get-VstsTaskVariable -Name "PowerBI_Tools_Path"))
 	{
 		Write-VstsTaskError -Message "Please add the 'Power BI Tool Installer' before this task."
 	}
-
-	Invoke-Expression "$toolsPath/Scripts/Connect-PowerBI.ps1"
-
-	$group = Get-VstsInput -Name workspace
-	$groupId = Invoke-Expression "$toolsPath/Scripts/Get-PowerBIGroup.ps1 -Name '$group'"
-
-	if ($groupId)
+	Else
 	{
-		Invoke-PowerBIRestMethod -Method Delete -Url "groups/$groupId"
+		Import-Module "$toolsPath/Modules/PowerBI"
 	}
-	else
-	{
-		Write-VstsTaskError -Message "Unable to find a workspace with the name '$group'"
-	}
+
+	# Connect
+	Connect-PowerBI -Endpoint (Get-VstsEndpoint -Name (Get-VstsInput -Name Connection))
+
+	# Execute
+	$Group = Get-VstsInput -Name Workspace
+	
+	Remove-PowerBIGroup -Group $Group
 }
-finally
+Finally
 {
 	Trace-VstsLeavingInvocation $MyInvocation
 }
