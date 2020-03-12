@@ -74,7 +74,8 @@
         "None": "",
         "Enabled": "Enabled",
         "Disabled": "Disabled"
-      }
+      },
+      "defaultValue": "None"
     },
     {
       "name": "Days",
@@ -104,7 +105,7 @@
       "type": "string",
       "label": "Time Zone",
       "required": false,
-      "helpMarkDown": "The name of the time zone from this list. (link)(https://support.microsoft.com/help/973627/microsoft-time-zone-index-values).<br><br>Example: `Central Standard Time`"
+      "helpMarkDown": "The name of the time zone from this list. [link](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values).<br><br>Example: `Central Standard Time`"
     },
     {
       "name": "NotifyOption",
@@ -119,7 +120,8 @@
         "NoNotification": "No Notification",
         "MailOnFailure": "Mail on Failure",
         "MailOnCompletion": "Mail on Completion"
-      }
+      },
+      "defaultValue": "None"
     }
   ],
   "execution": {
