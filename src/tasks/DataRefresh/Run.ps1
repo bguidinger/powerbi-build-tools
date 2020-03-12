@@ -16,9 +16,21 @@ Try
 
 	# Execute
 	$Group = Get-VstsInput -Name Workspace
-	$Dataset = Get-VstsInput -Name Dataset
+	$Type = Get-VstsInput -Name Type
+	$Name = Get-VstsInput -Name Name
+	$NotifyOption = Get-VstsInput -Name NotifyOption
 
-	Remove-PowerBIDataset -Group $Group -Dataset $Dataset
+	switch ($Type)
+	{
+		"Dataset"
+		{
+			Update-PowerBIDataset -Group $Group -Dataset $Name -NotifyOption $NotifyOption
+		}
+		"Dataflow"
+		{
+			Update-PowerBIDataflow -Group $Group -Dataflow $Name -NotifyOption $NotifyOption
+		}
+	}
 }
 Finally
 {

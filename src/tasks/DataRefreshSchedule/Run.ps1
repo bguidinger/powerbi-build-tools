@@ -15,9 +15,29 @@ Try
 	Connect-PowerBI -Endpoint (Get-VstsEndpoint -Name (Get-VstsInput -Name Connection))
 
 	# Execute
+	$Group = Get-VstsInput -Name Workspace
+	$Type = Get-VstsInput -Name Action
 	$Name = Get-VstsInput -Name Name
-	
-	New-PowerBIGroup -Name $Name
+	$Action = Get-VstsInput -Name Action
+
+	switch ($Action)
+	{
+		"SetState"
+		{
+			$Enabled = Get-VstsInput -Name Enabled -Require
+			switch ($Type)
+			{
+				"Dataset"
+				{
+					Set-PowerBIDatasetRefreshSchedule -Group $Group -Dataset $Name -Enabled $Enabled
+				}
+				"Dataflow"
+				{
+					Set-PowerBIDataflowRefreshSchedule -Group $Group -Dataflow $Name -Enabled $Enabled
+				}
+			}
+		}
+	}
 }
 Finally
 {

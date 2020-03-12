@@ -48,7 +48,18 @@ foreach($task in $tasks)
         $taskDef.inputs[0].type = 'string'
 
         $inputYaml = $taskDef.inputs | % { "    $($_.aliases[0]): {$($_.type)}" }
-        $inputTable = $taskDef.inputs | % { "| $($_.name) | $($_.label) | $($_.required) | $($_.type) | $($_.helpMarkDown)" }
+        $inputTable = $taskDef.inputs | % {
+            if ($_.options)
+            {
+                $options = ($_.options | Get-Member -MemberType Properties | % { "<li>$($_.Name)</li>" }) -join ""
+                "| $($_.name) | $($_.label) | $($_.required) | $($_.type) | Options:<ul>$options</ul>"
+            }
+            else
+            {
+                "| $($_.name) | $($_.label) | $($_.required) | $($_.type) | $($_.helpMarkDown)"
+            }
+            
+        }
 
         $schema = $schemaTemplate -f $taskName, $taskMajorVersion, ($schemaInputsTemplate -f ($inputYaml -join "`r`n"))
         $inputs = $inputsSchema -f ($inputTable -join "`r`n")
