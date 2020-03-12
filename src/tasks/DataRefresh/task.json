@@ -17,7 +17,7 @@
     "Minor": "0",
     "Patch": "0"
   },
-  "instanceNameFormat": "Power BI Data Refresh: $(Dataset)",
+  "instanceNameFormat": "Power BI Data Refresh: $(Name)",
   "inputs": [
     {
       "name": "Connection",

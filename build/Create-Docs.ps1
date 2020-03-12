@@ -52,7 +52,7 @@ foreach($task in $tasks)
             if ($_.options)
             {
                 $options = ($_.options | Get-Member -MemberType Properties | % { "<li>$($_.Name)</li>" }) -join ""
-                "| $($_.name) | $($_.label) | $($_.required) | $($_.type) | Options:<ul>$options</ul>"
+                "| $($_.name) | $($_.label) | $($_.required) | $($_.type) | <ul>$options</ul>"
             }
             else
             {

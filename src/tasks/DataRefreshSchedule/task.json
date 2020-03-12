@@ -17,7 +17,7 @@
     "Minor": "0",
     "Patch": "0"
   },
-  "instanceNameFormat": "Power BI Data Refresh Schedule",
+  "instanceNameFormat": "Power BI Data Refresh Schedule: $(Name)",
   "inputs": [
     {
       "name": "Connection",
