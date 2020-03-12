@@ -16,26 +16,24 @@ Try
 
 	# Execute
 	$Group = Get-VstsInput -Name Workspace
-	$Type = Get-VstsInput -Name Action
+	$Type = Get-VstsInput -Name Type
 	$Name = Get-VstsInput -Name Name
-	$Action = Get-VstsInput -Name Action
 
-	switch ($Action)
+	$Enabled = Get-VstsInput -Name Enabled
+	$Days = Get-VstsInput -Name Days
+	$Times = Get-VstsInput -Name Times
+	$TimeZone = Get-VstsInput -Name TimeZone
+	$NotifyOption = Get-VstsInput -Name NotifyOption
+
+	switch ($Type)
 	{
-		"SetState"
+		"Dataset"
 		{
-			$Enabled = Get-VstsInput -Name Enabled -Require
-			switch ($Type)
-			{
-				"Dataset"
-				{
-					Set-PowerBIDatasetRefreshSchedule -Group $Group -Dataset $Name -Enabled $Enabled
-				}
-				"Dataflow"
-				{
-					Set-PowerBIDataflowRefreshSchedule -Group $Group -Dataflow $Name -Enabled $Enabled
-				}
-			}
+			Set-PowerBIDatasetRefreshSchedule -Group $Group -Dataset $Name -Enabled $Enabled -Days $Days -Times $Times -TimeZone $TimeZone -NotifyOption $NotifyOption
+		}
+		"Dataflow"
+		{
+			Set-PowerBIDataflowRefreshSchedule -Group $Group -Dataflow $Name -Enabled $Enabled -Days $Days -Times $Times -TimeZone $TimeZone -NotifyOption $NotifyOption
 		}
 	}
 }

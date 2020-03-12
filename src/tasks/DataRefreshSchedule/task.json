@@ -2,7 +2,7 @@
   "id": "6961BBD6-4D00-43EB-90D6-A8A95E9CBABC",
   "name": "PowerBIDataRefreshSchedule",
   "friendlyName": "Power BI Data Refresh Schedule",
-  "description": "Performs an action on a dataset or dataflow refresh schedule.",
+  "description": "Updates the data refresh schedule of a dataset or dataflow.",
   "author": "bguidinger",
   "category": "Azure Pipelines",
   "visibility": [
@@ -63,27 +63,62 @@
       "helpMarkDown": "The ID or name of the dataset or dataflow."
     },
     {
-      "name": "Action",
-      "aliases": [
-        "action"
-      ],
-      "type": "pickList",
-      "label": "Action",
-      "required": true,
-      "options": {
-        "SetState": "Set State"
-      }
-    },
-    {
       "name": "Enabled",
       "aliases": [
         "enabled"
       ],
-      "type": "boolean",
-      "label": "Enabled",
+      "type": "pickList",
+      "label": "Status",
       "required": false,
-      "helpMarkDown": "Enables or disables the refresh schedule.",
-      "visibleRule": "Action = SetState"
+      "options": {
+        "Enabled": "Enabled",
+        "Disabled": "Disabled"
+      }
+    },
+    {
+      "name": "Days",
+      "aliases": [
+        "days"
+      ],
+      "type": "string",
+      "label": "Days",
+      "required": false,
+      "helpMarkDown": "An array of the days of the week. Example: `[ \"Monday\", \"Wednesday\", \"Friday\" ]`"
+    },
+    {
+      "name": "Times",
+      "aliases": [
+        "times"
+      ],
+      "type": "string",
+      "label": "Times",
+      "required": false,
+      "helpMarkDown": "An array of the times of the day. Example: `[ \"10:00\", \"14:00\" ]`"
+    },
+    {
+      "name": "Time Zone",
+      "aliases": [
+        "timeZone",
+        "timezone"
+      ],
+      "type": "string",
+      "label": "Time Zone",
+      "required": false,
+      "helpMarkDown": "The name of the time zone from [this list](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values). Example: `Central Standard Time`"
+    },
+    {
+      "name": "NotifyOption",
+      "aliases": [
+        "notifyOption"
+      ],
+      "type": "pickList",
+      "label": "Notify Option",
+      "required": false,
+      "options": {
+        "NoNotification": "No Notification",
+        "MailOnFailure": "Mail on Failure",
+        "MailOnCompletion": "Mail on Completion"
+      }
     }
   ],
   "execution": {

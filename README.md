@@ -10,11 +10,11 @@ Use Power BI Build Tools to automate common build and release tasks related to P
 | Action | Description
 |--------|------------
 | [Tool Installer](./docs/tasks/PowerBIToolInstaller.md) | Installs the required tools.
+| [Create](./docs/tasks/PowerBICreate.md) | Creates a workspace.
+| [Delete](./docs/tasks/PowerBIDelete.md) | Deletes a workspace, dataset, dataflow, or report.
 | [Import](./docs/tasks/PowerBIImport.md) | Imports a file (.rdl, .pbix, etc.) into a workspace.
-| [Create](./docs/tasks/PowerBIImport.md) | Creates a workspace.
-| [Delete](./docs/tasks/PowerBIImport.md) | Deletes a workspace, dataset, dataflow, or report.
 | [Data Refresh](./docs/tasks/PowerBIDataRefresh.md) | Triggers a refresh of a dataset or dataflow.
-| [Data Refresh Schedule](./docs/tasks/PowerBIDataRefreshSchedule.md) | Performs an action on a data refresh schedule (e.g. enable/disable).
+| [Data Refresh Schedule](./docs/tasks/PowerBIDataRefreshSchedule.md) | Updates the data refresh schedule of a dataset or dataflow.
 | [Set Credentials](./docs/tasks/PowerBISetCredentials.md) | Sets data source credentials based on the supplied connection strings.
 
 
