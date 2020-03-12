@@ -6,24 +6,27 @@ Function Set-PowerBICredentials
 		[Parameter(Mandatory = $true)]$ConnectionStrings
 	)
 
-	foreach ($ConnectionString in $ConnectionStrings)
+	$ConnectionStrings | Get-Member -MemberType Properties | % `
 	{
+		$ConnectionString = $ConnectionStrings.$($_.Name)
+
 		$Builder = New-Object System.Data.SqlClient.SqlConnectionStringBuilder($ConnectionString)
+
 		$Candidates = $DataSources | ? {$_.connectionDetails.server -eq $Builder.DataSource -and $_.connectionDetails.database -eq $Builder.InitialCatalog}
 		foreach ($Candidate in $Candidates)
 		{
 			$Body = @{
 				credentialDetails = @{
 					credentialType = "Basic";
-					credentials = "{`"credentialData`":[{`"name`":`"username`", `"value`":`"$($builder.UserID)`"},{`"name`":`"password`", `"value`":`"$($builder.Password)`"}]}";
+					credentials = "{`"credentialData`":[{`"name`":`"username`", `"value`":`"$($Builder.UserID)`"},{`"name`":`"password`", `"value`":`"$($Builder.Password)`"}]}";
 					encryptedConnection = "Encrypted";
 					encryptionAlgorithm = "None";
 					privacyLevel = "None"
 				}
 			} | ConvertTo-Json
 
-			$gatewayId = $candidate.gatewayId
-			$datasourceId = $candidate.datasourceId
+			$gatewayId = $Candidate.gatewayId
+			$datasourceId = $Candidate.datasourceId
 
 			$Url = Get-PowerBIUrl -Url "gateways/$gatewayId/datasources/$datasourceId"
 
