@@ -42,8 +42,7 @@
         "Dataset": "Dataset",
         "Dataflow": "Dataflow",
         "Report": "Report"
-      },
-      "defaultValue": "Workspace"
+      }
     },
     {
       "name": "Workspace",
