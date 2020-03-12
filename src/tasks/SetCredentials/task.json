@@ -2,7 +2,7 @@
   "id": "56D429CF-D06D-4DE4-A7E0-133FB47A116A",
   "name": "PowerBISetCredentials",
   "friendlyName": "Power BI Set Credentials",
-  "description": "Sets credentials for a datasource.",
+  "description": "Sets credentials for the datasources of a report or dataset.",
   "author": "bguidinger",
   "category": "Azure Pipelines",
   "visibility": [
@@ -68,11 +68,11 @@
       "aliases": [
         "connectionStrings"
       ],
-      "type": "string",
+      "type": "multiLine",
       "label": "Connection Strings",
       "defaultValue": "",
       "required": false,
-      "helpMarkDown": "Connection strings to replace in .rdl files. The keys are the names of the data sources.  The values are the connection strings.",
+      "helpMarkDown": "Connection strings in JSON format. The keys are the names of the data sources.  The values are the connection strings.",
       "properties": {
         "resizable": "true",
         "rows": "4",

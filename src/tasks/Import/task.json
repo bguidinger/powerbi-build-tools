@@ -54,11 +54,11 @@
       "aliases": [
         "connectionStrings"
       ],
-      "type": "string",
+      "type": "multiLine",
       "label": "Connection Strings",
       "defaultValue": "",
       "required": false,
-      "helpMarkDown": "Connection strings to replace in .rdl files. The keys are the names of the data sources.  The values are the connection strings.",
+      "helpMarkDown": "Connection strings in JSON format. The keys are the names of the data sources.  The values are the connection strings.",
       "properties": {
         "resizable": "true",
         "rows": "4",
