@@ -10,11 +10,11 @@ Function Invoke-PowerBI
 
 	if (-not $script:EndpointUrl)
 	{
-		throw "You are not connected to Power BI."
+		Write-Error "You are not connected to Power BI."
 	}
 
 	$Headers = Get-PowerBIAccessToken
 	$Uri = "$script:EndpointUrl/$Url"
-	Write-Host $Uri
-	Invoke-RestMethod -Method $Method -Headers $Headers -Uri $Uri -Body $Body -ContentType $ContentType
+
+	return Invoke-RestMethod -Method $Method -Headers $Headers -Uri $Uri -Body $Body -ContentType $ContentType
 }

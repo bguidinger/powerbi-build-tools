@@ -6,7 +6,9 @@ Function New-PowerBIImport
 		[Parameter(Mandatory = $true)]$File,
 		[Parameter(Mandatory = $false)]$ConnectionStrings
 	)
-	
+
+	Write-Host "Importing '$($File.Name)'"
+
 	$FileName = [System.IO.Path]::GetFileName($File)
 	$Extension = [System.IO.Path]::GetExtension($File)
 	$ReportName = [System.IO.Path]::GetFileNameWithoutExtension($File)

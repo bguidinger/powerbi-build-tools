@@ -8,7 +8,7 @@ Try
 	}
 	Else
 	{
-		Import-Module "$toolsPath/Modules/PowerBI"
+		Import-Module "$toolsPath/Modules/PowerBI" -Force
 	}
 
 	# Connect
@@ -20,25 +20,17 @@ Try
 	$ConnectionStrings = Get-VstsInput -Name ConnectionStrings | ConvertFrom-Json -ErrorAction SilentlyContinue
 
 	$Files = Get-ChildItem -Path $Path
-
-	$FileCount = 0
-
-	Write-Progress -Activity "Import" -PercentComplete 0 -Status "Starting"
 	foreach ($File in $Files)
-	{
-		$PercentComplete = ($FileCount / $Files.Count) * 100.0
-		Write-Progress -Activity "Import" -PercentComplete $PercentComplete -Status "Importing" -CurrentOperation "Importing '$($File.Name)'"
-		
+	{		
 		$GroupId = Get-PowerBIGroup -Group $group -Id
 
 		$Import = New-PowerBIImport -Group $GroupId -File $File -ConnectionStrings $ConnectionStrings
 
-		Set-PowerBIReportCredentials -Group $GroupId -Report $Import.reports.id -ConnectionStrings $ConnectionStrings
-
-		$FileCount++
+		if ($ConnectionStrings)
+		{
+			Set-PowerBIReportCredentials -Group $GroupId -Report $Import.reports.id -ConnectionStrings $ConnectionStrings
+		}
 	}
-
-	Write-Progress -Activity "Import" -Completed
 }
 Finally
 {

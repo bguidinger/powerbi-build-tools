@@ -8,7 +8,7 @@ Try
 	}
 	Else
 	{
-		Import-Module "$toolsPath/Modules/PowerBI"
+		Import-Module "$toolsPath/Modules/PowerBI" -Force
 	}
 
 	# Connect
@@ -24,11 +24,11 @@ Try
 	{
 		"Report"
 		{
-			Set-PowerBIReportCredentials -Group $Group -Report Name -ConnectionStrings $ConnectionStrings
+			Set-PowerBIReportCredentials -Group $Group -Report $Name -ConnectionStrings $ConnectionStrings
 		}
 		"Dataset"
 		{
-			Set-PowerBIReportCredentials -Group $Group -Report Name -ConnectionStrings $ConnectionStrings
+			Set-PowerBIReportCredentials -Group $Group -Report $Name -ConnectionStrings $ConnectionStrings
 		}
 	}
 }
