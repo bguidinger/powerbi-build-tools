@@ -98,8 +98,7 @@
     {
       "name": "Time Zone",
       "aliases": [
-        "timeZone",
-        "timezone"
+        "timeZone"
       ],
       "type": "string",
       "label": "Time Zone",
