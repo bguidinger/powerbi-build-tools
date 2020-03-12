@@ -27,7 +27,7 @@ Try
 
 		$Import = New-PowerBIImport -Group $GroupId -File $File -ConnectionStrings $ConnectionStrings
 
-		Set-PowerBIReportCredentials -Group $GroupId -Report $Import.reports.id -connectionStrings $ConnectionStrings
+		Set-PowerBIReportCredentials -Group $GroupId -Report $Import.reports.id -ConnectionStrings $ConnectionStrings
 	}
 }
 Finally

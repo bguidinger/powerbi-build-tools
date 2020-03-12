@@ -7,7 +7,7 @@ Function Set-PowerBIDatasetCredentials
 		[Parameter(Mandatory = $true)]$ConnectionStrings
 	)
 
-	$DataSources = Get-PowerBIDatasetDataSources -Group $GroupId -Dataset $Dataset
+	$DataSources = Get-PowerBIDatasetDataSources -Group $Group -Dataset $Dataset
 
 	Set-PowerBICredentials -DataSources $DataSources -ConnectionStrings $ConnectionStrings
 }

@@ -7,7 +7,7 @@ Function Set-PowerBIReportCredentials
 		[Parameter(Mandatory = $true)]$ConnectionStrings
 	)
 
-	$DataSources = Get-PowerBIReportDataSources -Group $GroupId -Report $Report
+	$DataSources = Get-PowerBIReportDataSources -Group $Group -Report $Report
 
 	Set-PowerBICredentials -DataSources $DataSources -ConnectionStrings $ConnectionStrings
 }
