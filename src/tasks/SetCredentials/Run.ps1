@@ -22,11 +22,15 @@ Try
 
 	switch ($Type)
 	{
-		"Report"
-		{
-			Set-PowerBIReportCredentials -Group $Group -Report $Name -ConnectionStrings $ConnectionStrings
-		}
 		"Dataset"
+		{
+			Set-PowerBIDatasetCredentials -Group $Group -Dataset $Name -ConnectionStrings $ConnectionStrings
+		}
+		"Dataflow"
+		{
+			Set-PowerBIDataflowCredentials -Group $Group -Dataflow $Name -ConnectionStrings $ConnectionStrings
+		},
+		"Report"
 		{
 			Set-PowerBIReportCredentials -Group $Group -Report $Name -ConnectionStrings $ConnectionStrings
 		}
