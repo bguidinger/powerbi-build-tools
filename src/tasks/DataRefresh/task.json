@@ -30,16 +30,6 @@
       "helpMarkDown": "The service connection to Power BI."
     },
     {
-      "name": "Workspace",
-      "aliases": [
-        "workspace"
-      ],
-      "type": "string",
-      "label": "Workspace",
-      "required": false,
-      "helpMarkDown": "The ID or name of the workspace. If not specified, your personal workspace will be used."
-    },
-    {
       "name": "Type",
       "aliases": [
         "type"
@@ -52,6 +42,16 @@
         "Dataflow": "Dataflow"
       },
       "defaultValue": "Dataset"
+    },
+    {
+      "name": "Workspace",
+      "aliases": [
+        "workspace"
+      ],
+      "type": "string",
+      "label": "Workspace",
+      "required": false,
+      "helpMarkDown": "The ID or name of the workspace. If not specified, your personal workspace will be used."
     },
     {
       "name": "Name",

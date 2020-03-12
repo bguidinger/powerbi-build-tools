@@ -238,7 +238,7 @@
       }
     },
     {
-      "id": "PowerBIDataRefresh",
+      "id": "PowerBIRefreshData",
       "type": "ms.vss-distributed-task.task",
       "targets": [
         "ms.vss-distributed-task.tasks"
@@ -248,7 +248,7 @@
       }
     },
     {
-      "id": "PowerBIDataRefreshSchedule",
+      "id": "PowerBIRefreshDataSchedule",
       "type": "ms.vss-distributed-task.task",
       "targets": [
         "ms.vss-distributed-task.tasks"

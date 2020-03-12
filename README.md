@@ -9,14 +9,13 @@ Use Power BI Build Tools to automate common build and release tasks related to P
 
 | Action | Description
 |--------|------------
-| [Tool Installer](./docs/tasks/PowerBIToolInstaller.md) | Installs the tools.
-| [Import](./docs/tasks/PowerBIImport.md) | Imports a file into a workspace.
-| [Set Credentials](./docs/tasks/PowerBISetCredentials.md) | Sets data source credentials.
-| [Dataset Delete](./docs/tasks/PowerBIDatasetDelete.md) | Deletes a dataset.
-| [Dataset Refresh](./docs/tasks/PowerBIDatasetRefresh.md) | Refreshes a dataset.
-| [Report Delete](./docs/tasks/PowerBIReportDelete.md) | Deletes a report.
-| [Workspace Create](./docs/tasks/PowerBIWorkspaceCreate.md) | Creates a workspace.
-| [Workspace Delete](./docs/tasks/PowerBIWorkspaceDelete.md) | Deletes a workspace.
+| [Tool Installer](./docs/tasks/PowerBIToolInstaller.md) | Installs the required tools.
+| [Import](./docs/tasks/PowerBIImport.md) | Imports a file (.rdl, .pbix, etc.) into a workspace.
+| [Create](./docs/tasks/PowerBIImport.md) | Creates a workspace.
+| [Delete](./docs/tasks/PowerBIImport.md) | Deletes a workspace, dataset, dataflow, or report.
+| [Data Refresh](./docs/tasks/PowerBIDataRefresh.md) | Triggers a refresh of a dataset or dataflow.
+| [Data Refresh Schedule](./docs/tasks/PowerBIDataRefreshSchedule.md) | Performs an action on a data refresh schedule (e.g. enable/disable).
+| [Set Credentials](./docs/tasks/PowerBISetCredentials.md) | Sets data source credentials based on the supplied connection strings.
 
 
 ## FAQ
