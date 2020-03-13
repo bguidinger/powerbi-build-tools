@@ -75,6 +75,9 @@
       "path": "tasks/Import"
     },
     {
+      "path": "tasks/Export"
+    },
+    {
       "path": "tasks/SetCredentials"
     },
     {
@@ -266,6 +269,16 @@
       ],
       "properties": {
         "name": "tasks/Import"
+      }
+    },
+    {
+      "id": "PowerBIExport",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "tasks/Export"
       }
     },
     {
