@@ -41,7 +41,7 @@
   },
   "links": {
     "getstarted": {
-      "uri": "https://github.com/bguidinger/powerbi-build-tools"
+      "uri": "https://github.com/bguidinger/powerbi-build-tools/blob/master/docs/GettingStarted.md"
     },
     "repository": {
       "uri": "https://github.com/bguidinger/powerbi-build-tools"
