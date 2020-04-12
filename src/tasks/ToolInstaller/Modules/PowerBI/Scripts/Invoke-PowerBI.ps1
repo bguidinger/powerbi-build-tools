@@ -16,7 +16,9 @@ Function Invoke-PowerBI
 
 	$Headers = Get-PowerBIAccessToken
 	$Uri = "$script:EndpointUrl/$Url"
-	Write-Host $Uri
+
+	Write-Host "$($Method.ToUpper()) $Uri"
+
 	if ($OutFile)
 	{
 		Invoke-RestMethod -Method $Method -Headers $Headers -Uri $Uri -Body $Body -ContentType $ContentType -OutFile $OutFile
