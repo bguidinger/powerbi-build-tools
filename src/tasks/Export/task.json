@@ -60,6 +60,7 @@
       "options": {
         "PBIX": ".pbix",
         "PDF": ".pdf",
+        "PNG": ".png",
         "PPTX": ".pptx"
       },
       "defaultValue": "PBIX"
