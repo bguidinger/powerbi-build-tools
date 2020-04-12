@@ -36,3 +36,7 @@ Yes, assuming you are using a dedicated capacity, you can import Paginated Repor
 **Can I set credentials on data sources for reports/datasets?**
 
 Yes, you can either do this using either the `Import` task or the `Set Credentials` task.
+
+**If something isn't working, can I get support from Microsoft?**
+
+No. While I do work for Microsoft, this extenion is supported personally by me during my free time. If you have run into any issues, please log them on [GitHub](https://github.com/bguidinger/powerbi-build-tools/issues).
