@@ -4,7 +4,7 @@
 ## Overview
 Use Power BI Build Tools to automate common build and release tasks related to Power BI.
 
-To find out more and get started, check out the [Getting Started](./docs/GettingStarted.md) guide.
+To find out more and get started, check out [this](./docs/GettingStarted.md) guide.
 
 ## Actions
 
@@ -13,8 +13,8 @@ To find out more and get started, check out the [Getting Started](./docs/Getting
 | [Tool Installer](./docs/tasks/PowerBIToolInstaller.md) | Installs the required tools.
 | [Create](./docs/tasks/PowerBICreate.md) | Creates a workspace.
 | [Delete](./docs/tasks/PowerBIDelete.md) | Deletes a workspace, dataset, dataflow, or report.
-| [Import](./docs/tasks/PowerBIImport.md) | Imports a file (.rdl, .pbix, etc.) into a workspace.
-| [Export](./docs/tasks/PowerBIExport.md) | Exports a report to a .pbix file.
+| [Import](./docs/tasks/PowerBIImport.md) | Imports a file (.pbix, .rdl, etc.) into a workspace.
+| [Export](./docs/tasks/PowerBIExport.md) | Exports a report to a file (.pbix, .pdf, etc.).
 | [Data Refresh](./docs/tasks/PowerBIDataRefresh.md) | Triggers a refresh of a dataset or dataflow.
 | [Data Refresh Schedule](./docs/tasks/PowerBIDataRefreshSchedule.md) | Updates the data refresh schedule of a dataset or dataflow.
 | [Permissions](./docs/tasks/PowerBIPermissions.md) | Sets or refreshes permissions for a workspace.
@@ -23,7 +23,7 @@ To find out more and get started, check out the [Getting Started](./docs/Getting
 
 ## FAQ
 
-**Does this support support all of the Power BI national/sovereign clouds?**
+**Does this support all of the Power BI national/sovereign clouds?**
 
 Yes, these build tools support GCC, GCC High, GCC DoD, China, and Germany.
 
