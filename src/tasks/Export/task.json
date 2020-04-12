@@ -2,7 +2,7 @@
   "id": "2923BF11-733A-4143-9654-0D0A155507E5",
   "name": "PowerBIExport",
   "friendlyName": "Power BI Export",
-  "description": "Refresh a dataset or dataflow.",
+  "description": "Export a report.",
   "author": "bguidinger",
   "category": "Azure Pipelines",
   "visibility": [
@@ -58,7 +58,10 @@
       "label": "File Format",
       "required": true,
       "options": {
-        "PBIX": ".pbix"
+        "PBIX": ".pbix",
+        "PDF": ".pdf",
+        "PNG": ".png",
+        "PPTX": ".pptx"
       },
       "defaultValue": "PBIX"
     },

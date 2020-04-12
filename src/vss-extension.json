@@ -41,7 +41,7 @@
   },
   "links": {
     "getstarted": {
-      "uri": "https://github.com/bguidinger/powerbi-build-tools"
+      "uri": "https://github.com/bguidinger/powerbi-build-tools/blob/master/docs/GettingStarted.md"
     },
     "repository": {
       "uri": "https://github.com/bguidinger/powerbi-build-tools"
@@ -76,6 +76,9 @@
     },
     {
       "path": "tasks/Export"
+    },
+    {
+      "path": "tasks/Permissions"
     },
     {
       "path": "tasks/SetCredentials"
@@ -279,6 +282,16 @@
       ],
       "properties": {
         "name": "tasks/Export"
+      }
+    },
+    {
+      "id": "PowerBIPermissions",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "tasks/Permissions"
       }
     },
     {
