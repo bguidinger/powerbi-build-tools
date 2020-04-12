@@ -78,6 +78,9 @@
       "path": "tasks/Export"
     },
     {
+      "path": "tasks/Permissions"
+    },
+    {
       "path": "tasks/SetCredentials"
     },
     {
@@ -279,6 +282,16 @@
       ],
       "properties": {
         "name": "tasks/Export"
+      }
+    },
+    {
+      "id": "PowerBIPermissions",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "tasks/Permissions"
       }
     },
     {

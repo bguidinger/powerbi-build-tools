@@ -20,7 +20,14 @@ Try
 	$FileFormat = Get-VstsInput -Name FileFormat
 	$Path = Get-VstsInput -Name Path
 
-	$Export = New-PowerBIExport -Group $Group -Report $Name -FileFormat $FileFormat -Path $Path
+	If ($FileFormat -eq "PBIX")
+	{
+		New-PowerBIExport -Group $Group -Report $Name -FileFormat $FileFormat -Path $Path
+	}
+	Else
+	{
+		New-PowerBIExportTo -Group $Group -Report $Name -FileFormat $FileFormat -Path $Path
+	}
 }
 Finally
 {
