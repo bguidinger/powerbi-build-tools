@@ -2,7 +2,7 @@
   "id": "E23502C5-3FDC-41F8-89C7-E364366448DB",
   "name": "PowerBIPermissions",
   "friendlyName": "Power BI Permissions",
-  "description": "Sets permissions for a workspace.",
+  "description": "Sets or refreshes permissions for a workspace.",
   "author": "bguidinger",
   "category": "Azure Pipelines",
   "visibility": [
@@ -30,16 +30,6 @@
       "helpMarkDown": "The service connection to Power BI."
     },
     {
-      "name": "Workspace",
-      "aliases": [
-        "workspace"
-      ],
-      "type": "string",
-      "label": "Workspace",
-      "required": true,
-      "helpMarkDown": "The ID or name of the workspace."
-    },
-    {
       "name": "Action",
       "aliases": [
         "action"
@@ -55,6 +45,17 @@
       }
     },
     {
+      "name": "Workspace",
+      "aliases": [
+        "workspace"
+      ],
+      "type": "string",
+      "label": "Workspace",
+      "required": true,
+      "helpMarkDown": "The ID or name of the workspace.",
+      "visibleRule": "Action = Add || Action = Remove || Action = Update"
+    },
+    {
       "name": "PrincipalType",
       "aliases": [
         "principalType"
@@ -67,7 +68,7 @@
         "User": "User",
         "Group": "Group"
       },
-      "visibleRule": "Action != Refresh"
+      "visibleRule": "Action = Add || Action = Remove || Action = Update"
     },
     {
       "name": "Principal",
@@ -78,7 +79,7 @@
       "label": "Principal",
       "required": true,
       "helpMarkDown": "The ID or email address of the principal.",
-      "visibleRule": "Action != Refresh"
+      "visibleRule": "Action = Add || Action = Remove || Action = Update"
     },
     {
       "name": "Permission",
@@ -94,7 +95,7 @@
         "Member": "Member",
         "Contributor": "Contributor"
       },
-      "visibleRule": "Action != Refresh"
+      "visibleRule": "Action = Add || Action = Remove || Action = Update"
     }
   ],
   "execution": {
