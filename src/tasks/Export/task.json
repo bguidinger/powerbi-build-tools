@@ -47,7 +47,7 @@
       "type": "string",
       "label": "Name",
       "required": true,
-      "helpMarkDown": "The ID or name of the dataset or dataflow."
+      "helpMarkDown": "The ID or name of the report."
     },
     {
       "name": "FileFormat",
@@ -58,18 +58,19 @@
       "label": "File Format",
       "required": true,
       "options": {
-        "PBIX": "PBIX",
-        "PDF": "PDF",
-        "CSV": "CSV",
-        "XML": "XML",
-        "DOCX": "DOCX",
-        "PPTX": "PPTX",
-        "XLSX": "XLSX",
-        "IMAGE": "IMAGE",
-        "PNG": "PNG",
-        "MHTML": "MHTML"
+        "PBIX": ".pbix"
       },
-      "defaultValue": "PDF"
+      "defaultValue": "PBIX"
+    },
+    {
+      "name": "Path",
+      "aliases": [
+        "path"
+      ],
+      "type": "filePath",
+      "label": "Path",
+      "required": true,
+      "helpMarkDown": "The path to save the exported file to."
     }
   ],
   "execution": {

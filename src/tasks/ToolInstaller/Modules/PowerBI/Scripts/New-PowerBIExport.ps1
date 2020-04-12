@@ -5,7 +5,7 @@ Function New-PowerBIExport
 	    [Parameter(Mandatory = $false)][string]$Group,
 		[Parameter(Mandatory = $true)]$Report,
 		[Parameter(Mandatory = $true)]$FileFormat,
-		[Parameter(Mandatory = $false)]$Parameters
+		[Parameter(Mandatory = $true)]$Path
 	)
 
 	Write-Host "Exporting '$Report' to $FileFormat"
@@ -13,21 +13,7 @@ Function New-PowerBIExport
 	$GroupId = Get-PowerBIGroup -Group $Group -Id
 	$ReportId = Get-PowerBIReport -Group $GroupId -Report $Report -Id
 
-	
-	$Body = @{
-		format = $FileFormat,
-		paginatedReportExportConfiguration = @{
-			parameterValues = @{}
-		}
-	}
+	$Url = Get-PowerBIUrl -Group $GroupId -Url "reports/$ReportId/Export"
 
-	if ($Parameters)
-	{
-		$Params = $Parameters | ConvertFrom-Json
-		$Params | Get-Member -MemberType Properties | % { $Body.paginatedReportExportConfiguration.parameterValues[$_.Name] = $Params.$($_.Name) }
-	}
-	$Body | ConvertTo-Json
-	$Url = Get-PowerBIUrl -Group $GroupId -Url "reports/$ReportId/ExportTo"
-
-	Invoke-PowerBI -Method Post -Url $Url -Body ($Body | ConvertTo-Json)
+	Invoke-PowerBI -Method Get -Url $Url -OutFile "$Path/$Report.$($FileFormat.ToLower())"
 }

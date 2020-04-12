@@ -5,7 +5,8 @@ Function Invoke-PowerBI
         [Parameter(Mandatory = $true)]$Method,
 		[Parameter(Mandatory = $true)]$Url,
 		[Parameter(Mandatory = $false)]$Body,
-		[Parameter(Mandatory = $false)]$ContentType = 'application/json'
+		[Parameter(Mandatory = $false)]$ContentType = 'application/json',
+		[Parameter(Mandatory = $false)]$OutFile
     )
 
 	if (-not $script:EndpointUrl)
@@ -15,6 +16,13 @@ Function Invoke-PowerBI
 
 	$Headers = Get-PowerBIAccessToken
 	$Uri = "$script:EndpointUrl/$Url"
-
-	return Invoke-RestMethod -Method $Method -Headers $Headers -Uri $Uri -Body $Body -ContentType $ContentType
+	Write-Host $Uri
+	if ($OutFile)
+	{
+		Invoke-RestMethod -Method $Method -Headers $Headers -Uri $Uri -Body $Body -ContentType $ContentType -OutFile $OutFile
+	}
+	Else
+	{
+		Invoke-RestMethod -Method $Method -Headers $Headers -Uri $Uri -Body $Body -ContentType $ContentType
+	}
 }
