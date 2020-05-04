@@ -27,9 +27,6 @@ steps:
      New-Item -ItemType Directory $_/ps_modules
      Copy-Item -Recurse -Path $(Agent.TempDirectory)/VstsTaskSdk/0.11.0 -Destination $_/ps_modules/VstsTaskSdk
    }
-  
-   Set-Location ToolInstaller
-   Save-Module -Name MicrosoftPowerBIMgmt.Profile -Path Modules
   displayName: 'Prepare Extension'
 
 - task: TfxInstaller@2

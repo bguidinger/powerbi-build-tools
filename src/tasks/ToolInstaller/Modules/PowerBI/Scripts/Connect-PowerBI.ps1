@@ -7,20 +7,12 @@ Function Connect-PowerBI
         [Parameter(Mandatory = $true)]$Endpoint
     )
 
-	$path = "$PSScriptRoot/../MicrosoftPowerBIMgmt.Profile"
-	if (Test-Path $path)
+	$module = Get-Module MicrosoftPowerBIMgmt.Profile
+	If (-not $module)
 	{
-		Import-Module -Name "$PSScriptRoot/../MicrosoftPowerBIMgmt.Profile"
+		Install-Module MicrosoftPowerBIMgmt.Profile -Scope CurrentUser -Force
 	}
-	Else
-	{
-		$module = Get-Module MicrosoftPowerBIMgmt.Profile
-		if (-not $module)
-		{
-			Install-Module MicrosoftPowerBIMgmt.Profile -Scope CurrentUser
-		}
-		Import-Module MicrosoftPowerBIMgmt.Profile
-	}
+	Import-Module MicrosoftPowerBIMgmt.Profile
 	
 	$script:EndpointUrl = $Endpoint.Url
 
