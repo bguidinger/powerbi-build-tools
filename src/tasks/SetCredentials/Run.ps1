@@ -29,7 +29,7 @@ Try
 		"Dataflow"
 		{
 			Set-PowerBIDataflowCredentials -Group $Group -Dataflow $Name -ConnectionStrings $ConnectionStrings
-		},
+		}
 		"Report"
 		{
 			Set-PowerBIReportCredentials -Group $Group -Report $Name -ConnectionStrings $ConnectionStrings
